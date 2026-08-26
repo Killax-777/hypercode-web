@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyperCode — Sistemas para negocios que venden todos los días</title>
+<meta name="description" content="Software de inventario y punto de venta para farmacias, tiendas y boutiques en Guatemala. Instalación remota, plan anual con mantenimiento y garantía. Prueba gratis 7 días.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   PARA EDITAR RÁPIDO:
+   - Tu WhatsApp: busca  19543019626
+   - Precios y proyectos: hasta abajo, en la lista PROYECTOS
+   ============================================================ */
+
+:root{
+  /* Paleta: laca de jícara de Rabinal */
+  --laca:        #100E0B;
+  --laca-alta:   #1A1611;
+  --laca-borde:  #2C251C;
+  --ocre:        #DCA84A;
+  --achiote:     #C4482F;
+  --jade:        #4F8B7A;
+  --hueso:       #EFE7D7;
+  --hueso-tenue: #988D7B;
+
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --texto:   "Karla", system-ui, sans-serif;
+  --mono:    "JetBrains Mono", monospace;
+
+  --ancho: 1140px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--laca);
+  color:var(--hueso);
+  font-family:var(--texto);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none; z-index:0;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.envoltura{ position:relative; z-index:1; }
+.contenedor{ width:100%; max-width:var(--ancho); margin:0 auto; padding:0 28px; }
+a{ color:inherit; }
+
+:focus-visible{ outline:2px solid var(--ocre); outline-offset:3px; border-radius:2px; }
+
+.barras{
+  height:34px;
+  background-image:repeating-linear-gradient(
+    90deg,
+    var(--laca-borde) 0px, var(--laca-borde) 2px,
+    transparent 2px, transparent 5px,
+    var(--laca-borde) 5px, var(--laca-borde) 6px,
+    transparent 6px, transparent 11px,
+    var(--laca-borde) 11px, var(--laca-borde) 14px,
+    transparent 14px, transparent 16px
+  );
+  opacity:.75;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado{
+  position:sticky; top:0; z-index:50;
+  background:rgba(16,14,11,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--laca-borde);
+}
+.encabezado .contenedor{
+  display:flex; align-items:center; justify-content:space-between; height:70px;
+}
+.marca{
+  font-family:var(--display); font-weight:800;
+  font-size:1.2rem; letter-spacing:-.03em;
+  text-decoration:none; display:flex; align-items:center; gap:11px;
+}
+.marca-signo{
+  font-family:var(--mono); font-weight:700;
+  color:var(--ocre); font-size:1.05rem;
+}
+.nav-acciones{ display:flex; align-items:center; gap:22px; }
+.nav-enlace{ font-size:.92rem; color:var(--hueso-tenue); text-decoration:none; transition:color .2s; }
+.nav-enlace:hover{ color:var(--hueso); }
+
+/* ---------- Botón WhatsApp ---------- */
+.boton-wa{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--ocre); color:#100E0B;
+  font-family:var(--texto); font-weight:700; font-size:.95rem;
+  padding:12px 22px; border-radius:100px;
+  text-decoration:none; border:none; cursor:pointer;
+  transition:transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s;
+}
+.boton-wa:hover{ transform:translateY(-2px); box-shadow:0 10px 28px -8px rgba(220,168,74,.55); }
+.boton-wa svg{ width:19px; height:19px; flex-shrink:0; }
+.boton-wa--grande{ padding:17px 34px; font-size:1.06rem; }
+.boton-wa--fantasma{ background:transparent; color:var(--hueso); border:1px solid var(--laca-borde); }
+.boton-wa--fantasma:hover{ border-color:var(--ocre); color:var(--ocre); box-shadow:none; }
+
+/* ---------- Portada ---------- */
+.portada{ padding:88px 0 100px; }
+.portada .contenedor{
+  display:grid; grid-template-columns:1.05fr .95fr; gap:76px; align-items:center;
+}
+.cejilla{
+  font-family:var(--mono); font-size:.76rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ocre);
+  display:flex; align-items:center; gap:12px; margin-bottom:26px;
+}
+.cejilla::after{
+  content:""; height:1px; flex:1; max-width:80px;
+  background:linear-gradient(90deg,var(--ocre),transparent);
+}
+.titulo-portada{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(2.5rem,5.4vw,4.15rem);
+  line-height:1.02; letter-spacing:-.035em; margin-bottom:26px;
+}
+.titulo-portada em{ font-style:normal; color:var(--ocre); position:relative; white-space:nowrap; }
+.titulo-portada em::after{
+  content:""; position:absolute; left:0; right:0; bottom:.07em; height:.09em;
+  background:var(--achiote); opacity:.85;
+}
+.entrada-portada{ font-size:1.14rem; color:var(--hueso-tenue); max-width:44ch; margin-bottom:30px; }
+.insignia-prueba{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.08em;
+  color:var(--jade); background:rgba(79,139,122,.13);
+  border:1px solid rgba(79,139,122,.28);
+  padding:9px 17px; border-radius:100px; margin-bottom:32px;
+}
+.acciones-portada{ display:flex; flex-wrap:wrap; gap:14px; }
+
+/* ---------- El recibo (elemento firma) ---------- */
+.marco-recibo{ display:flex; justify-content:center; }
+.recibo{
+  width:100%; max-width:352px;
+  background:linear-gradient(178deg,#F6F1E6,#E6DECE);
+  color:#1C1710;
+  font-family:var(--mono); font-size:.79rem; line-height:1.75;
+  padding:32px 28px 24px; position:relative;
+  box-shadow:0 34px 70px -22px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.05);
+  transform:rotate(-1.3deg);
+}
+.recibo::after{
+  content:""; position:absolute; left:0; right:0; bottom:-11px; height:12px;
+  background:
+    linear-gradient(-45deg, transparent 50%, #E6DECE 50%) 0 0/13px 13px repeat-x,
+    linear-gradient(45deg, transparent 50%, #E6DECE 50%) 0 0/13px 13px repeat-x;
+}
+.recibo-negocio{
+  font-family:var(--display); font-weight:800; font-size:1.22rem;
+  text-align:center; letter-spacing:-.02em; line-height:1.2;
+}
+.recibo-sub{
+  text-align:center; font-size:.68rem; letter-spacing:.14em;
+  text-transform:uppercase; color:#7C7263; margin-bottom:16px;
+}
+.recibo-regla{ border-top:1px dashed #B6AC99; margin:11px 0; }
+.recibo-fila{ display:flex; justify-content:space-between; gap:14px; }
+.recibo-fila span:first-child{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.recibo-total{ font-weight:700; font-size:1.06rem; display:flex; justify-content:space-between; padding-top:4px; }
+.recibo-pie{ text-align:center; font-size:.68rem; color:#7C7263; margin-top:14px; }
+.recibo-barras{
+  height:36px; margin-top:16px;
+  background-image:repeating-linear-gradient(
+    90deg,#1C1710 0 2px, transparent 2px 4px,
+    #1C1710 4px 5px, transparent 5px 9px,
+    #1C1710 9px 12px, transparent 12px 14px
+  );
+}
+.etiqueta-telegram{
+  position:absolute; right:-15px; top:44px;
+  background:var(--jade); color:#08120F;
+  font-family:var(--texto); font-weight:700; font-size:.7rem;
+  padding:6px 13px; border-radius:100px;
+  box-shadow:0 8px 22px -6px rgba(0,0,0,.65);
+  transform:rotate(3.5deg); white-space:nowrap;
+}
+.aparece{ opacity:0; animation:subir .5s cubic-bezier(.2,.8,.3,1) forwards; }
+@keyframes subir{ from{opacity:0;transform:translateY(9px)} to{opacity:1;transform:none} }
+
+/* ---------- Secciones ---------- */
+.seccion{ padding:96px 0; }
+.seccion--alta{ background:var(--laca-alta); }
+.cabeza-seccion{ max-width:60ch; margin-bottom:52px; }
+.titulo-seccion{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(1.85rem,3.4vw,2.7rem);
+  letter-spacing:-.03em; line-height:1.1; margin-bottom:15px;
+}
+.texto-seccion{ color:var(--hueso-tenue); font-size:1.06rem; }
+
+/* ---------- Tarjetas de proyecto ---------- */
+.rejilla-proyectos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:22px; }
+.tarjeta{
+  position:relative; text-align:left;
+  background:var(--laca); color:inherit;
+  border:1px solid var(--laca-borde); border-radius:15px;
+  padding:32px 28px 28px; cursor:pointer; font:inherit;
+  transition:transform .25s cubic-bezier(.2,.8,.3,1), border-color .25s;
+  overflow:hidden;
+}
+.seccion--alta .tarjeta{ background:var(--laca-alta); }
+.tarjeta::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:2px;
+  background:linear-gradient(90deg,var(--ocre),var(--achiote));
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1);
+}
+.tarjeta:hover{ transform:translateY(-5px); border-color:#42382A; }
+.tarjeta:hover::before{ transform:scaleX(1); }
+.tarjeta-estado{
+  font-family:var(--mono); font-size:.68rem;
+  letter-spacing:.13em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:5px 12px; border-radius:100px; margin-bottom:20px;
+}
+.estado--activo{ background:rgba(79,139,122,.16); color:var(--jade); }
+.estado--pronto{ background:rgba(152,141,123,.12); color:var(--hueso-tenue); }
+.tarjeta-titulo{
+  font-family:var(--display); font-weight:800; font-size:1.42rem;
+  letter-spacing:-.025em; line-height:1.18; margin-bottom:11px;
+}
+.tarjeta-texto{ color:var(--hueso-tenue); font-size:.97rem; margin-bottom:20px; }
+.tarjeta-precio{
+  font-family:var(--display); font-weight:600; font-size:1.15rem;
+  color:var(--ocre); margin-bottom:20px;
+}
+.tarjeta-precio small{
+  font-family:var(--texto); font-weight:400; font-size:.82rem;
+  color:var(--hueso-tenue); display:block; margin-top:2px;
+}
+.tarjeta-para{
+  font-family:var(--mono); font-size:.72rem; color:var(--hueso-tenue);
+  letter-spacing:.05em; padding-top:18px; border-top:1px solid var(--laca-borde);
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+}
+.tarjeta-ver{ color:var(--ocre); display:inline-flex; align-items:center; gap:7px; }
+.tarjeta-ver svg{ width:13px; height:13px; transition:transform .25s; }
+.tarjeta:hover .tarjeta-ver svg{ transform:translateX(4px); }
+
+/* ---------- Ficha (modal) ---------- */
+.velo{
+  position:fixed; inset:0; z-index:100;
+  background:rgba(8,7,5,.8); backdrop-filter:blur(7px);
+  display:none; align-items:flex-start; justify-content:center;
+  padding:5vh 20px; overflow-y:auto;
+}
+.velo.abierto{ display:flex; }
+.ficha{
+  width:100%; max-width:730px;
+  background:var(--laca-alta); border:1px solid var(--laca-borde);
+  border-radius:19px; padding:44px 44px 38px; position:relative;
+  animation:entraFicha .34s cubic-bezier(.2,.8,.3,1);
+}
+@keyframes entraFicha{ from{opacity:0;transform:translateY(22px) scale(.985)} to{opacity:1;transform:none} }
+.ficha-cerrar{
+  position:absolute; top:20px; right:20px;
+  width:38px; height:38px; border-radius:50%;
+  background:var(--laca); border:1px solid var(--laca-borde);
+  color:var(--hueso-tenue); font-size:1.15rem; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:color .2s, border-color .2s;
+}
+.ficha-cerrar:hover{ color:var(--hueso); border-color:#42382A; }
+.ficha-titulo{
+  font-family:var(--display); font-weight:800; font-size:2.05rem;
+  letter-spacing:-.03em; line-height:1.1; margin:14px 0 12px;
+}
+.ficha-entrada{ color:var(--hueso-tenue); margin-bottom:34px; max-width:56ch; }
+.ficha-rotulo{
+  font-family:var(--mono); font-size:.71rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ocre); margin-bottom:16px;
+}
+.ficha-bloque{ margin-bottom:34px; }
+.ficha-parrafo{ color:var(--hueso-tenue); font-size:.99rem; }
+.lista-incluye{ list-style:none; display:grid; gap:11px; }
+.lista-incluye li{ display:flex; gap:13px; align-items:flex-start; font-size:.99rem; }
+.lista-incluye li::before{
+  content:""; flex-shrink:0; width:6px; height:6px; margin-top:.62em;
+  border-radius:50%; background:var(--jade);
+}
+
+/* Precios dentro de la ficha */
+.rejilla-planes{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+.plan{
+  background:var(--laca); border:1px solid var(--laca-borde);
+  border-radius:13px; padding:24px 24px 22px; position:relative;
+}
+.plan--destacado{ border-color:rgba(220,168,74,.45); }
+.plan-nombre{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--hueso-tenue); margin-bottom:10px;
+}
+.plan-monto{
+  font-family:var(--display); font-weight:800; font-size:2rem;
+  letter-spacing:-.03em; line-height:1; margin-bottom:4px;
+}
+.plan-periodo{ font-size:.82rem; color:var(--hueso-tenue); margin-bottom:14px; }
+.plan-detalle{ font-size:.9rem; color:var(--hueso-tenue); }
+.plan-extra{
+  background:var(--laca); border:1px solid var(--laca-borde);
+  border-radius:13px; padding:20px 24px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:18px; flex-wrap:wrap; margin-bottom:16px;
+}
+.plan-extra-texto{ font-size:.93rem; color:var(--hueso-tenue); max-width:44ch; }
+.plan-extra-monto{
+  font-family:var(--display); font-weight:700; font-size:1.35rem; color:var(--ocre);
+  white-space:nowrap;
+}
+.caja-garantia{
+  background:rgba(79,139,122,.09);
+  border:1px solid rgba(79,139,122,.24);
+  border-radius:13px; padding:22px 26px; margin-bottom:32px;
+}
+.garantia-lista{ list-style:none; display:grid; gap:9px; }
+.garantia-lista li{ font-size:.94rem; color:var(--hueso-tenue); display:flex; gap:11px; }
+.garantia-lista li::before{ content:"—"; color:var(--jade); flex-shrink:0; }
+.garantia-lista strong{ color:var(--hueso); font-weight:700; }
+.ficha-nota{ font-size:.87rem; color:var(--hueso-tenue); margin-top:18px; text-align:center; }
+
+/* ---------- Cómo trabajo ---------- */
+.pasos{ display:grid; gap:2px; background:var(--laca-borde); border-radius:14px; overflow:hidden; }
+.paso{
+  background:var(--laca-alta); padding:28px 32px;
+  display:grid; grid-template-columns:64px 1fr; gap:24px; align-items:start;
+}
+.seccion--alta .paso{ background:var(--laca); }
+.paso-num{ font-family:var(--mono); font-size:.79rem; color:var(--ocre); padding-top:.34em; }
+.paso-titulo{ font-family:var(--display); font-weight:600; font-size:1.16rem; margin-bottom:6px; }
+.paso-texto{ color:var(--hueso-tenue); font-size:.97rem; }
+
+/* ---------- Preguntas ---------- */
+.preguntas{ display:grid; gap:2px; background:var(--laca-borde); border-radius:14px; overflow:hidden; }
+.pregunta{ background:var(--laca-alta); }
+.seccion--alta .pregunta{ background:var(--laca); }
+.pregunta summary{
+  padding:24px 30px; cursor:pointer; list-style:none;
+  font-family:var(--display); font-weight:600; font-size:1.08rem;
+  display:flex; justify-content:space-between; align-items:center; gap:18px;
+  transition:color .2s;
+}
+.pregunta summary::-webkit-details-marker{ display:none; }
+.pregunta summary::after{
+  content:"+"; font-family:var(--mono); color:var(--ocre);
+  font-size:1.3rem; flex-shrink:0; transition:transform .25s;
+}
+.pregunta[open] summary::after{ transform:rotate(45deg); }
+.pregunta summary:hover{ color:var(--ocre); }
+.pregunta-cuerpo{ padding:0 30px 26px; color:var(--hueso-tenue); font-size:.99rem; max-width:70ch; }
+
+/* ---------- Quién está detrás ---------- */
+.firma{ padding:88px 0; }
+.firma .contenedor{
+  display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:start;
+  max-width:880px;
+}
+.firma-sello{
+  width:78px; height:78px; border-radius:50%; flex-shrink:0;
+  background:var(--laca-alta); border:1px solid var(--laca-borde);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-weight:800; font-size:1.55rem;
+  letter-spacing:-.03em; color:var(--ocre);
+}
+.firma-nombre{
+  font-family:var(--display); font-weight:800; font-size:1.55rem;
+  letter-spacing:-.03em; line-height:1.2; margin-bottom:3px;
+}
+.firma-cargo{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ocre); margin-bottom:18px;
+}
+.firma-texto{ color:var(--hueso-tenue); font-size:1.02rem; max-width:56ch; }
+
+/* ---------- Cierre ---------- */
+.cierre{ padding:104px 0; text-align:center; }
+.cierre-titulo{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(2rem,4.2vw,3.1rem);
+  letter-spacing:-.035em; line-height:1.08; margin-bottom:18px;
+}
+.cierre-texto{ color:var(--hueso-tenue); font-size:1.09rem; max-width:48ch; margin:0 auto 38px; }
+
+/* ---------- Pie ---------- */
+.pie{ border-top:1px solid var(--laca-borde); padding:36px 0; font-size:.87rem; color:var(--hueso-tenue); }
+.pie .contenedor{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+.pie a{ color:var(--hueso-tenue); text-decoration:none; }
+.pie a:hover{ color:var(--ocre); }
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .portada .contenedor{ grid-template-columns:1fr; gap:56px; }
+  .portada{ padding:60px 0 76px; }
+  .marco-recibo{ order:-1; }
+  .recibo{ transform:rotate(-1deg); max-width:320px; }
+  .seccion{ padding:72px 0; }
+  .ficha{ padding:38px 26px 30px; }
+  .ficha-titulo{ font-size:1.65rem; }
+  .paso{ grid-template-columns:44px 1fr; gap:16px; padding:24px; }
+  .rejilla-planes{ grid-template-columns:1fr; }
+}
+@media (max-width:560px){
+  body{ font-size:16px; }
+  .contenedor{ padding:0 20px; }
+  .nav-enlace{ display:none; }
+  .acciones-portada{ flex-direction:column; align-items:stretch; }
+  .boton-wa{ justify-content:center; }
+  .etiqueta-telegram{ right:-6px; font-size:.65rem; }
+  .pregunta summary{ padding:20px 22px; font-size:1rem; }
+  .pregunta-cuerpo{ padding:0 22px 22px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  .aparece{ opacity:1; }
+  html{ scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+<div class="envoltura">
+
+<header class="encabezado">
+  <div class="contenedor">
+    <a href="#" class="marca"><span class="marca-signo">&lt;/&gt;</span>HyperCode</a>
+    <nav class="nav-acciones">
+      <a href="#proyectos" class="nav-enlace">Proyectos</a>
+      <a href="#proceso" class="nav-enlace">Cómo trabajo</a>
+      <a href="#preguntas" class="nav-enlace">Preguntas</a>
+      <a class="boton-wa" href="https://wa.me/19543019626?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20HyperCode%20y%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== PORTADA ===================== -->
+<section class="portada">
+  <div class="contenedor">
+    <div>
+      <p class="cejilla">Rabinal, Baja Verapaz</p>
+      <h1 class="titulo-portada">
+        Software que <em>trabaja</em><br>desde el mostrador.
+      </h1>
+      <p class="entrada-portada">
+        Sistemas de inventario y punto de venta para farmacias, tiendas
+        y boutiques. Se instalan en su computadora, funcionan sin internet,
+        y yo mismo se los dejo andando.
+      </p>
+      <p class="insignia-prueba">✓ &nbsp;Pruébelo gratis 7 días, sin pagar nada</p>
+      <div class="acciones-portada">
+        <a class="boton-wa boton-wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20quiero%20la%20prueba%20gratis%20de%207%20d%C3%ADas" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+          Pedir la prueba gratis
+        </a>
+        <a class="boton-wa boton-wa--grande boton-wa--fantasma" href="#proyectos">Ver precios</a>
+      </div>
+    </div>
+
+    <div class="marco-recibo">
+      <div class="recibo" role="img" aria-label="Ejemplo de recibo de venta generado por el sistema: Farmacia Santa Elena, tres productos, total 78 quetzales.">
+        <div class="etiqueta-telegram aparece" style="animation-delay:1.55s">Enviado por Telegram</div>
+        <p class="recibo-negocio aparece" style="animation-delay:.15s">Farmacia Santa Elena</p>
+        <p class="recibo-sub aparece" style="animation-delay:.25s">Recibo de venta</p>
+        <div class="recibo-regla aparece" style="animation-delay:.35s"></div>
+        <div class="recibo-fila aparece" style="animation-delay:.45s"><span>Fecha</span><span>14:32</span></div>
+        <div class="recibo-fila aparece" style="animation-delay:.55s"><span>Vendedor</span><span>Marta L.</span></div>
+        <div class="recibo-regla aparece" style="animation-delay:.65s"></div>
+        <div class="recibo-fila aparece" style="animation-delay:.8s"><span>Acetaminofén 500mg x2</span><span>Q18.00</span></div>
+        <div class="recibo-fila aparece" style="animation-delay:.95s"><span>Suero oral x1</span><span>Q12.00</span></div>
+        <div class="recibo-fila aparece" style="animation-delay:1.1s"><span>Alcohol en gel 250ml</span><span>Q48.00</span></div>
+        <div class="recibo-regla aparece" style="animation-delay:1.2s"></div>
+        <div class="recibo-total aparece" style="animation-delay:1.3s"><span>TOTAL</span><span>Q78.00</span></div>
+        <p class="recibo-pie aparece" style="animation-delay:1.45s">Inventario actualizado automáticamente</p>
+        <div class="recibo-barras aparece" style="animation-delay:1.6s"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="barras" aria-hidden="true"></div>
+
+<!-- ===================== PROYECTOS ===================== -->
+<section class="seccion seccion--alta" id="proyectos">
+  <div class="contenedor">
+    <div class="cabeza-seccion">
+      <h2 class="titulo-seccion">Proyectos</h2>
+      <p class="texto-seccion">
+        Toque cualquiera para ver todo lo que incluye, los precios
+        y qué cubre el plan anual.
+      </p>
+    </div>
+    <div class="rejilla-proyectos" id="rejilla"></div>
+  </div>
+</section>
+
+<!-- ===================== PROCESO ===================== -->
+<section class="seccion" id="proceso">
+  <div class="contenedor">
+    <div class="cabeza-seccion">
+      <h2 class="titulo-seccion">Cómo trabajo</h2>
+      <p class="texto-seccion">
+        Usted no instala nada ni configura nada. Yo me conecto a su
+        computadora y lo dejo funcionando el mismo día.
+      </p>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">01</div>
+        <div>
+          <h3 class="paso-titulo">Hablamos por WhatsApp</h3>
+          <p class="paso-texto">Me cuenta qué vende y cómo lleva hoy su inventario. Le digo si el sistema le sirve. Si no le sirve, se lo digo.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">02</div>
+        <div>
+          <h3 class="paso-titulo">Lo prueba 7 días gratis</h3>
+          <p class="paso-texto">Se lo instalo completo, sin pagar nada. Lo usa una semana con sus productos reales y decide con el sistema en la mano.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">03</div>
+        <div>
+          <h3 class="paso-titulo">Cargamos su inventario</h3>
+          <p class="paso-texto">Empezamos por lo que más vende. Le enseño a agregar el resto usted mismo, con lector de código de barras o a mano.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">04</div>
+        <div>
+          <h3 class="paso-titulo">Queda con soporte todo el año</h3>
+          <p class="paso-texto">Si algo falla, me escribe y lo reviso. Las actualizaciones del año van incluidas en su plan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="barras" aria-hidden="true"></div>
+
+<!-- ===================== PREGUNTAS ===================== -->
+<section class="seccion seccion--alta" id="preguntas">
+  <div class="contenedor">
+    <div class="cabeza-seccion">
+      <h2 class="titulo-seccion">Preguntas frecuentes</h2>
+      <p class="texto-seccion">Lo que más me preguntan antes de decidir.</p>
+    </div>
+    <div class="preguntas">
+
+      <details class="pregunta">
+        <summary>¿Necesito internet para usarlo?</summary>
+        <div class="pregunta-cuerpo">
+          No. El sistema completo funciona sin conexión: cobrar, controlar inventario,
+          ver el historial y sacar el resumen del día. Solo necesita internet si contrata
+          el plan con Telegram, que le manda los avisos al celular en tiempo real.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Qué pasa cuando se termina mi año?</summary>
+        <div class="pregunta-cuerpo">
+          El programa deja de abrir hasta renovar, pero <strong>sus datos no se borran ni se pierden</strong>.
+          Su inventario, sus ventas y su historial siguen intactos en su computadora.
+          Al renovar carga la licencia nueva y entra con todo tal como lo dejó.
+          Le aviso dentro del programa 15 días antes para que no lo agarre de sorpresa.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Puedo usarlo en dos computadoras?</summary>
+        <div class="pregunta-cuerpo">
+          Sí, con una licencia por cada computadora. La segunda cuesta Q1,500 al año.
+          Tenga en cuenta que <strong>cada computadora lleva su propio inventario</strong>,
+          así que sirve para dos sucursales separadas. Si necesita dos cajas del mismo local
+          viendo el mismo inventario, eso es la versión multi-caja, que está en desarrollo.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Emite facturas electrónicas de la SAT?</summary>
+        <div class="pregunta-cuerpo">
+          Todavía no. El sistema genera recibos de venta para su control y para el cliente,
+          pero no está conectado al régimen FEL. Si necesita facturar electrónicamente,
+          por ahora tendría que seguir haciéndolo por su medio actual.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Y si no me gusta?</summary>
+        <div class="pregunta-cuerpo">
+          Primero lo prueba 7 días gratis, sin pagar. Y si ya pagó y no le funcionó,
+          acepto devoluciones <strong>dentro de los primeros 15 días</strong> desde la compra.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Mi empleado puede ver cuánto gano?</summary>
+        <div class="pregunta-cuerpo">
+          No. La pantalla de venta solo muestra el precio al público. Los costos, las ganancias,
+          el inventario y la configuración quedan detrás de un PIN que solo usted conoce.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Necesito lector de código de barras?</summary>
+        <div class="pregunta-cuerpo">
+          No es obligatorio — puede buscar los productos por nombre. Pero con lector el cobro
+          es mucho más rápido y cargar el inventario toma bastante menos tiempo.
+          Sirve cualquier lector USB común.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Se pierden mis datos si se apaga la luz?</summary>
+        <div class="pregunta-cuerpo">
+          Cada venta se guarda en el momento, así que un apagón no le borra el trabajo del día.
+          Además el sistema deja respaldos automáticos en la misma computadora cada vez que cierra.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<div class="barras" aria-hidden="true"></div>
+
+<!-- ===================== QUIÉN ESTÁ DETRÁS ===================== -->
+<section class="firma">
+  <div class="contenedor">
+    <div class="firma-sello" aria-hidden="true">OG</div>
+    <div>
+      <p class="firma-nombre">Oscar García</p>
+      <p class="firma-cargo">Fundador y desarrollador</p>
+      <p class="firma-texto">
+        HyperCode lo llevo yo. Programo los sistemas, los instalo y doy el soporte —
+        cuando escribe al WhatsApp, le contesto yo, no un vendedor. Trabajo desde
+        Rabinal, Baja Verapaz, con negocios que necesitan software que funcione
+        aunque se caiga el internet.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CIERRE ===================== -->
+<section class="cierre">
+  <div class="contenedor">
+    <h2 class="cierre-titulo">Pruébelo una semana.<br>Después decide.</h2>
+    <p class="cierre-texto">
+      Se lo instalo completo y sin costo por 7 días. Si le sirve, seguimos.
+      Si no, no pasa nada.
+    </p>
+    <a class="boton-wa boton-wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20quiero%20la%20prueba%20gratis%20de%207%20d%C3%ADas%20del%20sistema" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+      Pedir la prueba gratis
+    </a>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="contenedor">
+    <span>© 2026 HyperCode · Oscar García · Rabinal, Baja Verapaz, Guatemala</span>
+    <a href="https://wa.me/19543019626" target="_blank" rel="noopener">+1 954 301 9626</a>
+  </div>
+</footer>
+
+</div><!-- /envoltura -->
+
+<div class="velo" id="velo" role="dialog" aria-modal="true" aria-labelledby="ficha-titulo">
+  <div class="ficha" id="ficha"></div>
+</div>
+
+<script>
+/* ==========================================================
+   LISTA DE PROYECTOS
+   Para agregar uno nuevo: copie un bloque { ... } completo,
+   péguelo dentro de los corchetes y cambie los textos.
+   estado: "activo" o "pronto"
+   ========================================================== */
+const PROYECTOS = [
+  {
+    id: "inventario",
+    estado: "activo",
+    etiquetaEstado: "Disponible",
+    titulo: "Sistema de Inventario y Punto de Venta",
+    resumen: "Controla existencias, cobra, descuenta del inventario y le avisa de lo que está por vencerse.",
+    precio: "Q2,999 <small>al año · una computadora</small>",
+    para: "Farmacias · Tiendas · Boutiques",
+    entrada: "Un programa que se instala en la computadora del negocio. Registra cada venta, descuenta el producto del inventario en el momento, y le avisa antes de que algo se venza o se acabe.",
+    incluye: [
+      "Cobro rápido con lector de código de barras, o buscando el producto por nombre",
+      "El inventario se descuenta solo con cada venta, sin apuntar nada aparte",
+      "Aviso de productos por vencer, con hasta tres meses de anticipación",
+      "Aviso cuando un producto llega al mínimo que usted configure",
+      "Control de lotes con su propia fecha de vencimiento",
+      "Registro de ventas por empleado, para saber quién vendió qué",
+      "PIN de acceso que protege sus costos y ganancias del personal",
+      "Historial completo de ventas para consultar cuando quiera",
+      "Resumen del día al cerrar: cuánto vendió y cuánto ganó",
+      "Respaldos automáticos guardados en la misma computadora",
+      "Funciona sin internet"
+    ],
+    requisitos: "Computadora con Windows de 64 bits. El lector de código de barras es opcional pero recomendado. La instalación la hago yo de forma remota, con usted presente.",
+    planes: [
+      { nombre:"Plan anual", monto:"Q2,999", periodo:"al año, una computadora",
+        detalle:"El sistema completo funcionando sin internet." },
+      { nombre:"Plan anual con Telegram", monto:"Q3,999", periodo:"al año, una computadora", destacado:true,
+        detalle:"Todo lo anterior, más el recibo de cada venta y las alertas de stock y vencimiento en su celular al momento. Requiere internet." }
+    ],
+    extra: { texto:"Computadora adicional, con su propia licencia e inventario independiente. Ideal para una segunda sucursal.", monto:"Q1,500 al año" },
+    garantia: [
+      "<strong>Prueba gratis de 7 días.</strong> Instalado y funcionando, sin pagar nada.",
+      "<strong>Devolución dentro de los 15 días.</strong> Si ya pagó y no le sirvió, le devuelvo su dinero.",
+      "<strong>Instalación remota incluida.</strong> Me conecto a su computadora y lo dejo andando.",
+      "<strong>Mantenimiento todo el año.</strong> Si algo falla, lo reviso y lo arreglo sin costo extra.",
+      "<strong>Actualizaciones incluidas.</strong> Las mejoras del año le llegan sin pagar aparte.",
+      "<strong>Soporte directo por WhatsApp.</strong> Me escribe a mí, sin call center."
+    ],
+    nota: "Escríbame y le agendo la instalación de prueba esta semana."
+  },
+  {
+    id: "multicaja",
+    estado: "pronto",
+    etiquetaEstado: "En desarrollo",
+    titulo: "Versión multi-caja",
+    resumen: "Varias cajas del mismo local trabajando sobre un solo inventario compartido, actualizado al instante.",
+    precio: "Cotización a la medida",
+    para: "Negocios con dos o más cajas",
+    entrada: "La versión actual está hecha para una computadora, y esa es la razón de que funcione sin internet y sin costos mensuales. Para que dos cajas del mismo local compartan el mismo inventario en tiempo real hace falta una arquitectura distinta, y es en lo que estoy trabajando.",
+    incluye: [
+      "Un solo inventario para todas las cajas del local",
+      "Cada venta descuenta al instante en todas las computadoras",
+      "Reportes unificados de todo el negocio",
+      "Sobre la red del local — sin depender del internet"
+    ],
+    requisitos: "Por definir. Si le interesa, escríbame: los primeros negocios que la necesiten me ayudan a definir cómo debe funcionar.",
+    planes: [],
+    extra: null,
+    garantia: [
+      "<strong>Mismas condiciones</strong> que el resto de los sistemas: instalación, mantenimiento, garantía y soporte incluidos."
+    ],
+    nota: "¿Tiene dos o más cajas? Cuénteme su caso por WhatsApp."
+  }
+];
+
+const WA = "https://wa.me/19543019626";
+const rejilla = document.getElementById("rejilla");
+const velo    = document.getElementById("velo");
+const ficha   = document.getElementById("ficha");
+let ultimoFoco = null;
+
+const flecha = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const iconoWa = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>';
+
+PROYECTOS.forEach(p => {
+  const b = document.createElement("button");
+  b.className = "tarjeta";
+  b.type = "button";
+  b.setAttribute("aria-haspopup", "dialog");
+  b.innerHTML = `
+    <span class="tarjeta-estado ${p.estado === "activo" ? "estado--activo" : "estado--pronto"}">${p.etiquetaEstado}</span>
+    <h3 class="tarjeta-titulo">${p.titulo}</h3>
+    <p class="tarjeta-texto">${p.resumen}</p>
+    <p class="tarjeta-precio">${p.precio}</p>
+    <span class="tarjeta-para">
+      <span>${p.para}</span>
+      <span class="tarjeta-ver">Ver detalle ${flecha}</span>
+    </span>`;
+  b.addEventListener("click", () => abrir(p, b));
+  rejilla.appendChild(b);
+});
+
+function abrir(p, origen){
+  ultimoFoco = origen;
+  const mensaje = encodeURIComponent(`Hola, me interesa: ${p.titulo}`);
+
+  const planesHTML = p.planes.length
+    ? `<div class="ficha-bloque">
+         <p class="ficha-rotulo">Precios</p>
+         <div class="rejilla-planes">
+           ${p.planes.map(pl => `
+             <div class="plan ${pl.destacado ? "plan--destacado" : ""}">
+               <p class="plan-nombre">${pl.nombre}</p>
+               <p class="plan-monto">${pl.monto}</p>
+               <p class="plan-periodo">${pl.periodo}</p>
+               <p class="plan-detalle">${pl.detalle}</p>
+             </div>`).join("")}
+         </div>
+         ${p.extra ? `
+           <div class="plan-extra">
+             <span class="plan-extra-texto">${p.extra.texto}</span>
+             <span class="plan-extra-monto">${p.extra.monto}</span>
+           </div>` : ""}
+       </div>`
+    : "";
+
+  ficha.innerHTML = `
+    <button class="ficha-cerrar" type="button" aria-label="Cerrar">&#10005;</button>
+    <span class="tarjeta-estado ${p.estado === "activo" ? "estado--activo" : "estado--pronto"}">${p.etiquetaEstado}</span>
+    <h2 class="ficha-titulo" id="ficha-titulo">${p.titulo}</h2>
+    <p class="ficha-entrada">${p.entrada}</p>
+
+    <div class="ficha-bloque">
+      <p class="ficha-rotulo">Qué incluye</p>
+      <ul class="lista-incluye">${p.incluye.map(i => `<li>${i}</li>`).join("")}</ul>
+    </div>
+
+    <div class="ficha-bloque">
+      <p class="ficha-rotulo">Qué necesita</p>
+      <p class="ficha-parrafo">${p.requisitos}</p>
+    </div>
+
+    ${planesHTML}
+
+    <div class="caja-garantia">
+      <p class="ficha-rotulo">Su plan incluye</p>
+      <ul class="garantia-lista">${p.garantia.map(i => `<li><span>${i}</span></li>`).join("")}</ul>
+    </div>
+
+    <div style="text-align:center">
+      <a class="boton-wa boton-wa--grande" href="${WA}?text=${mensaje}" target="_blank" rel="noopener">
+        ${iconoWa}
+        Preguntar por este sistema
+      </a>
+      <p class="ficha-nota">${p.nota}</p>
+    </div>`;
+
+  velo.classList.add("abierto");
+  document.body.style.overflow = "hidden";
+  const cerrarBtn = ficha.querySelector(".ficha-cerrar");
+  cerrarBtn.addEventListener("click", cerrar);
+  cerrarBtn.focus();
+}
+
+function cerrar(){
+  velo.classList.remove("abierto");
+  document.body.style.overflow = "";
+  if (ultimoFoco) ultimoFoco.focus();
+}
+
+velo.addEventListener("click", e => { if (e.target === velo) cerrar(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && velo.classList.contains("abierto")) cerrar();
+});
+</script>
+</body>
+</html>
