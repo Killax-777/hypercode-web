@@ -367,28 +367,61 @@ a{ color:inherit; }
 .pregunta summary:hover{ color:var(--ocre); }
 .pregunta-cuerpo{ padding:0 30px 26px; color:var(--hueso-tenue); font-size:.99rem; max-width:70ch; }
 
-/* ---------- Quién está detrás ---------- */
-.firma{ padding:88px 0; }
-.firma .contenedor{
-  display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:start;
-  max-width:880px;
+/* ---------- Quiénes somos ---------- */
+.nosotros-rejilla{
+  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:start;
+}
+.firma-encabezado{
+  display:flex; align-items:center; gap:20px; margin-bottom:26px;
 }
 .firma-sello{
-  width:78px; height:78px; border-radius:50%; flex-shrink:0;
+  width:70px; height:70px; border-radius:50%; flex-shrink:0;
   background:var(--laca-alta); border:1px solid var(--laca-borde);
   display:flex; align-items:center; justify-content:center;
-  font-family:var(--display); font-weight:800; font-size:1.55rem;
+  font-family:var(--display); font-weight:800; font-size:1.42rem;
   letter-spacing:-.03em; color:var(--ocre);
 }
 .firma-nombre{
-  font-family:var(--display); font-weight:800; font-size:1.55rem;
+  font-family:var(--display); font-weight:800; font-size:1.5rem;
   letter-spacing:-.03em; line-height:1.2; margin-bottom:3px;
 }
 .firma-cargo{
-  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--ocre); margin-bottom:18px;
+  font-family:var(--mono); font-size:.71rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ocre);
 }
-.firma-texto{ color:var(--hueso-tenue); font-size:1.02rem; max-width:56ch; }
+.firma-texto{ color:var(--hueso-tenue); font-size:1.02rem; max-width:58ch; }
+.firma-texto + .firma-texto{ margin-top:16px; }
+.firma-texto strong{ color:var(--hueso); font-weight:700; }
+
+.bloque-vision{
+  background:var(--laca-alta); border:1px solid var(--laca-borde);
+  border-left:2px solid var(--ocre);
+  border-radius:0 15px 15px 0; padding:32px 32px 30px;
+}
+.seccion--alta .bloque-vision{ background:var(--laca); }
+.vision-rotulo{
+  font-family:var(--mono); font-size:.71rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ocre); margin-bottom:16px;
+}
+.vision-texto{
+  font-family:var(--display); font-weight:600;
+  font-size:1.24rem; line-height:1.42; letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.vision-detalle{ color:var(--hueso-tenue); font-size:.97rem; }
+
+.principios{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2px; background:var(--laca-borde);
+  border-radius:14px; overflow:hidden; margin-top:56px;
+}
+.principio{ background:var(--laca-alta); padding:30px 30px 28px; }
+.seccion--alta .principio{ background:var(--laca); }
+.principio-titulo{
+  font-family:var(--display); font-weight:600; font-size:1.1rem;
+  letter-spacing:-.02em; margin-bottom:9px;
+}
+.principio-texto{ color:var(--hueso-tenue); font-size:.95rem; }
 
 /* ---------- Cierre ---------- */
 .cierre{ padding:104px 0; text-align:center; }
@@ -416,6 +449,9 @@ a{ color:inherit; }
   .ficha-titulo{ font-size:1.65rem; }
   .paso{ grid-template-columns:44px 1fr; gap:16px; padding:24px; }
   .rejilla-planes{ grid-template-columns:1fr; }
+  .nosotros-rejilla{ grid-template-columns:1fr; gap:40px; }
+  .bloque-vision{ border-radius:0 13px 13px 0; padding:28px 26px 26px; }
+  .principios{ margin-top:40px; }
 }
 @media (max-width:560px){
   body{ font-size:16px; }
@@ -449,6 +485,7 @@ a{ color:inherit; }
       <a href="#proyectos" class="nav-enlace">Proyectos</a>
       <a href="#proceso" class="nav-enlace">Cómo trabajo</a>
       <a href="#preguntas" class="nav-enlace">Preguntas</a>
+      <a href="#nosotros" class="nav-enlace">Nosotros</a>
       <a class="boton-wa" href="https://wa.me/19543019626?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20HyperCode%20y%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
         WhatsApp
@@ -553,7 +590,7 @@ a{ color:inherit; }
         <div class="paso-num">04</div>
         <div>
           <h3 class="paso-titulo">Queda con soporte incluido</h3>
-          <p class="paso-texto">Su licencia incluye dos revisiones al año sin costo. Si necesita más, cada una cuesta Q200.</p> su plan.</p>
+          <p class="paso-texto">Su licencia incluye dos revisiones al año sin costo. Si necesita más, cada una cuesta Q200.</p>
         </div>
       </div>
     </div>
@@ -658,19 +695,83 @@ a{ color:inherit; }
 
 <div class="barras" aria-hidden="true"></div>
 
-<!-- ===================== QUIÉN ESTÁ DETRÁS ===================== -->
-<section class="firma">
+<!-- ===================== QUIÉNES SOMOS ===================== -->
+<section class="seccion" id="nosotros">
   <div class="contenedor">
-    <div class="firma-sello" aria-hidden="true">OG</div>
-    <div>
-      <p class="firma-nombre">Oscar García</p>
-      <p class="firma-cargo">Fundador y desarrollador</p>
-      <p class="firma-texto">
-        HyperCode lo llevo yo. Programo los sistemas, los instalo y doy el soporte —
-        cuando escribe al WhatsApp, le contesto yo, no un vendedor. Trabajo desde
-        Rabinal, Baja Verapaz, con negocios que necesitan software que funcione
-        aunque se caiga el internet.
+    <div class="cabeza-seccion">
+      <h2 class="titulo-seccion">Quiénes somos</h2>
+      <p class="texto-seccion">
+        Una casa de desarrollo guatemalteca dedicada a construir herramientas
+        que resuelvan problemas reales del comercio nacional.
       </p>
+    </div>
+
+    <div class="nosotros-rejilla">
+      <div>
+        <div class="firma-encabezado">
+          <div class="firma-sello" aria-hidden="true">OG</div>
+          <div>
+            <p class="firma-nombre">Oscar García</p>
+            <p class="firma-cargo">Fundador y desarrollador</p>
+          </div>
+        </div>
+
+        <p class="firma-texto">
+          HyperCode nace en <strong>Rabinal, Baja Verapaz</strong>, de donde soy
+          originario. Desarrollo, instalo y doy soporte a cada sistema
+          personalmente: cuando usted escribe, le responde quien programó el
+          programa que está usando, no un intermediario.
+        </p>
+        <p class="firma-texto">
+          Trabajo con negocios que operan en condiciones reales, donde el internet
+          se cae, la luz se va y el margen no alcanza para pagar mensualidades
+          eternas. Por eso los sistemas de HyperCode se instalan en la computadora
+          del negocio, funcionan sin conexión y son propiedad de quien los compra.
+        </p>
+        <p class="firma-texto">
+          Cada función que existe hoy salió de una necesidad concreta que un
+          comerciante me planteó. Ninguna se construyó porque se viera bien en
+          una presentación.
+        </p>
+      </div>
+
+      <aside class="bloque-vision">
+        <p class="vision-rotulo">Nuestra visión</p>
+        <p class="vision-texto">
+          Que el comercio guatemalteco tenga acceso a tecnología hecha para su
+          realidad, no adaptada de otra.
+        </p>
+        <p class="vision-detalle">
+          El sistema de inventario es el punto de partida. El camino es un
+          conjunto de herramientas que le devuelvan tiempo al guatemalteco en
+          su día a día: control de existencias, facturación, reportes y lo que
+          venga después. Construidas aquí, para lo que se necesita aquí.
+        </p>
+      </aside>
+    </div>
+
+    <div class="principios">
+      <div class="principio">
+        <h3 class="principio-titulo">El negocio es dueño de su sistema</h3>
+        <p class="principio-texto">
+          Sin servidores ajenos ni cuotas mensuales. Sus datos viven en su
+          computadora y siguen ahí pase lo que pase con nosotros.
+        </p>
+      </div>
+      <div class="principio">
+        <h3 class="principio-titulo">Se construye sobre necesidades reales</h3>
+        <p class="principio-texto">
+          Antes de desarrollar una función nueva, la consultamos con los negocios
+          que la usarían. Si nadie la necesita, no se construye.
+        </p>
+      </div>
+      <div class="principio">
+        <h3 class="principio-titulo">Respondemos por lo que entregamos</h3>
+        <p class="principio-texto">
+          Una sola persona programa, instala y da el soporte. No hay a quién
+          trasladarle la responsabilidad cuando algo falla.
+        </p>
+      </div>
     </div>
   </div>
 </section>
