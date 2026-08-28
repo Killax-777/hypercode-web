@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HyperCode — Sistemas para negocios que venden todos los días</title>
-<meta name="description" content="Software de inventario y punto de venta para farmacias, tiendas y boutiques en Guatemala. Instalación remota, plan anual con mantenimiento y garantía. Prueba gratis 7 días.">
-
+<meta name="description" content="Software de inventario y punto de venta para farmacias, tiendas, ferreterias y boutiques en Guatemala. Instalación remota, licencia anual desde Q700. Prueba gratis 7 días.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -553,8 +552,8 @@ a{ color:inherit; }
       <div class="paso">
         <div class="paso-num">04</div>
         <div>
-          <h3 class="paso-titulo">Queda con soporte todo el año</h3>
-          <p class="paso-texto">Si algo falla, me escribe y lo reviso. Las actualizaciones del año van incluidas en su plan.</p>
+          <h3 class="paso-titulo">Queda con soporte incluido</h3>
+          <p class="paso-texto">Su licencia incluye dos revisiones al año sin costo. Si necesita más, cada una cuesta Q200.</p> su plan.</p>
         </div>
       </div>
     </div>
@@ -591,13 +590,23 @@ a{ color:inherit; }
         </div>
       </details>
 
-      <details class="pregunta">
+        <details class="pregunta">
         <summary>¿Puedo usarlo en dos computadoras?</summary>
         <div class="pregunta-cuerpo">
-          Sí, con una licencia por cada computadora. La segunda cuesta Q1,500 al año.
-          Tenga en cuenta que <strong>cada computadora lleva su propio inventario</strong>,
-          así que sirve para dos sucursales separadas. Si necesita dos cajas del mismo local
-          viendo el mismo inventario, eso es la versión multi-caja, que está en desarrollo.
+          El sistema está hecho para una computadora, y esa es la razón de que funcione
+          sin internet y sin costos mensuales. Si tiene dos sucursales separadas,
+          escríbame y lo vemos. Si necesita dos cajas del mismo local viendo el mismo
+          inventario, eso es la versión multi-caja, que está en desarrollo.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Qué incluye el soporte?</summary>
+        <div class="pregunta-cuerpo">
+          Su licencia anual incluye <strong>dos revisiones sin costo</strong> durante el año:
+          si algo falla o se le desconfigura algo, me escribe y me conecto a revisarlo.
+          A partir de la tercera, cada revisión cuesta Q200. Las funciones nuevas que saque
+          más adelante se ofrecen aparte — usted decide si las quiere.
         </div>
       </details>
 
@@ -708,7 +717,7 @@ const PROYECTOS = [
     etiquetaEstado: "Disponible",
     titulo: "Sistema de Inventario y Punto de Venta",
     resumen: "Controla existencias, cobra, descuenta del inventario y le avisa de lo que está por vencerse.",
-    precio: "Q2,999 <small>al año · una computadora</small>",
+       precio: "Q700 <small>al año · una computadora</small>",
     para: "Farmacias · Tiendas · Boutiques",
     entrada: "Un programa que se instala en la computadora del negocio. Registra cada venta, descuenta el producto del inventario en el momento, y le avisa antes de que algo se venza o se acabe.",
     incluye: [
@@ -725,19 +734,19 @@ const PROYECTOS = [
       "Funciona sin internet"
     ],
     requisitos: "Computadora con Windows de 64 bits. El lector de código de barras es opcional pero recomendado. La instalación la hago yo de forma remota, con usted presente.",
-    planes: [
-      { nombre:"Plan anual", monto:"Q2,999", periodo:"al año, una computadora",
+        planes: [
+      { nombre:"Plan anual", monto:"Q700", periodo:"al año, una computadora",
         detalle:"El sistema completo funcionando sin internet." },
-      { nombre:"Plan anual con Telegram", monto:"Q3,999", periodo:"al año, una computadora", destacado:true,
+      { nombre:"Plan anual con Telegram", monto:"Q1,000", periodo:"al año, una computadora", destacado:true,
         detalle:"Todo lo anterior, más el recibo de cada venta y las alertas de stock y vencimiento en su celular al momento. Requiere internet." }
     ],
-    extra: { texto:"Computadora adicional, con su propia licencia e inventario independiente. Ideal para una segunda sucursal.", monto:"Q1,500 al año" },
+       extra: null,
     garantia: [
       "<strong>Prueba gratis de 7 días.</strong> Instalado y funcionando, sin pagar nada.",
       "<strong>Devolución dentro de los 15 días.</strong> Si ya pagó y no le sirvió, le devuelvo su dinero.",
       "<strong>Instalación remota incluida.</strong> Me conecto a su computadora y lo dejo andando.",
-      "<strong>Mantenimiento todo el año.</strong> Si algo falla, lo reviso y lo arreglo sin costo extra.",
-      "<strong>Actualizaciones incluidas.</strong> Las mejoras del año le llegan sin pagar aparte.",
+      "<strong>Dos revisiones al año sin costo.</strong> Si algo falla, me escribe y me conecto a revisarlo. De la tercera en adelante, Q200 cada una.",
+      "<strong>Mejoras opcionales.</strong> Cuando saque funciones nuevas se las ofrezco aparte, y usted decide si las quiere.",
       "<strong>Soporte directo por WhatsApp.</strong> Me escribe a mí, sin call center."
     ],
     nota: "Escríbame y le agendo la instalación de prueba esta semana."
