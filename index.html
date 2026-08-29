@@ -367,6 +367,28 @@ a{ color:inherit; }
 .pregunta summary:hover{ color:var(--ocre); }
 .pregunta-cuerpo{ padding:0 30px 26px; color:var(--hueso-tenue); font-size:.99rem; max-width:70ch; }
 
+
+/* ---------- Capturas del sistema ---------- */
+.rejilla-capturas{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;
+}
+.captura{
+  background:var(--laca-alta); border:1px solid var(--laca-borde);
+  border-radius:14px; overflow:hidden;
+}
+.seccion--alta .captura{ background:var(--laca); }
+.captura img{
+  display:block; width:100%; height:auto;
+  border-bottom:1px solid var(--laca-borde);
+}
+.captura-pie{ padding:16px 20px 18px; }
+.captura-titulo{
+  font-family:var(--display); font-weight:600; font-size:1.05rem;
+  letter-spacing:-.02em; margin-bottom:6px;
+}
+.captura-texto{ color:var(--hueso-tenue); font-size:.93rem; }
+
+/* ---------- Capturas del sistema ---------- */
 /* ---------- Quiénes somos ---------- */
 .nosotros-rejilla{
   display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:start;
@@ -483,6 +505,7 @@ a{ color:inherit; }
     <a href="#" class="marca"><span class="marca-signo">&lt;/&gt;</span>HyperCode</a>
     <nav class="nav-acciones">
       <a href="#proyectos" class="nav-enlace">Proyectos</a>
+      <a href="#capturas" class="nav-enlace">Así se ve</a>
       <a href="#proceso" class="nav-enlace">Cómo trabajo</a>
       <a href="#preguntas" class="nav-enlace">Preguntas</a>
       <a href="#nosotros" class="nav-enlace">Nosotros</a>
@@ -673,6 +696,27 @@ a{ color:inherit; }
       </details>
 
       <details class="pregunta">
+        <summary>¿Sirve en una computadora vieja?</summary>
+        <div class="pregunta-cuerpo">
+          Sí. No necesita tarjeta de video ni una máquina moderna: funciona con
+          los gráficos que ya trae cualquier computadora. Y para los equipos más
+          viejos, o donde nunca se instalaron los controladores de video, el
+          sistema trae un modo de compatibilidad que lo hace funcionar igual.
+          Lo dejo probado el día de la instalación.
+        </div>
+      </details>
+
+      <details class="pregunta">
+        <summary>¿Y si me equivoco al cobrar?</summary>
+        <div class="pregunta-cuerpo">
+          Se anula la venta desde el historial y los productos regresan solos al
+          inventario. La venta no se borra: queda marcada en rojo con el motivo,
+          para que usted vea siempre qué se anuló y por qué. Si tiene el plan con
+          Telegram, le llega el aviso al celular en el momento.
+        </div>
+      </details>
+
+      <details class="pregunta">
         <summary>¿Necesito lector de código de barras?</summary>
         <div class="pregunta-cuerpo">
           No es obligatorio — puede buscar los productos por nombre. Pero con lector el cobro
@@ -690,6 +734,21 @@ a{ color:inherit; }
       </details>
 
     </div>
+  </div>
+</section>
+
+<div class="barras" aria-hidden="true"></div>
+
+<!-- ===================== CAPTURAS ===================== -->
+<section class="seccion" id="capturas">
+  <div class="contenedor">
+    <div class="cabeza-seccion">
+      <h2 class="titulo-seccion">Así se ve</h2>
+      <p class="texto-seccion">
+        El sistema funcionando. Lo mismo que va a tener en su mostrador.
+      </p>
+    </div>
+    <div class="rejilla-capturas" id="rejilla-capturas"></div>
   </div>
 </section>
 
@@ -830,8 +889,10 @@ const PROYECTOS = [
       "Registro de ventas por empleado, para saber quién vendió qué",
       "PIN de acceso que protege sus costos y ganancias del personal",
       "Historial completo de ventas para consultar cuando quiera",
+      "Anular una venta cobrada por error, y el producto regresa solo al inventario",
       "Resumen del día al cerrar: cuánto vendió y cuánto ganó",
       "Respaldos automáticos guardados en la misma computadora",
+      "Respaldo a memoria USB o disco externo, con un botón",
       "Funciona sin internet"
     ],
     requisitos: "Computadora con Windows de 64 bits. El lector de código de barras es opcional pero recomendado. La instalación la hago yo de forma remota, con usted presente.",
@@ -876,6 +937,62 @@ const PROYECTOS = [
     nota: "¿Tiene dos o más cajas? Cuénteme su caso por WhatsApp."
   }
 ];
+
+
+/* ==========================================================
+   CAPTURAS DE PANTALLA
+   Ponga sus imagenes en la carpeta "capturas" con estos
+   nombres exactos. La que no exista, no se muestra.
+   Para agregar otra, copie un bloque { ... } y cambie los textos.
+   ========================================================== */
+const CAPTURAS = [
+  {
+    archivo: "capturas/venta.png",
+    titulo: "Modo Venta",
+    texto: "Escanea, cobra y descuenta del inventario. Es la pantalla donde su empleado pasa el dia."
+  },
+  {
+    archivo: "capturas/inventario.png",
+    titulo: "Inventario",
+    texto: "Todos sus productos con existencia, costo, precio y fecha de vencimiento."
+  },
+  {
+    archivo: "capturas/historial.png",
+    titulo: "Historial de ventas",
+    texto: "Cada venta con su detalle, y la opcion de anular la que se cobro por error."
+  }
+];
+
+const rejillaCapturas = document.getElementById("rejilla-capturas");
+const seccionCapturas = document.getElementById("capturas");
+let capturasVisibles = 0;
+
+CAPTURAS.forEach(c => {
+  const imagen = new Image();
+  imagen.src = c.archivo;
+  imagen.alt = c.titulo;
+  imagen.loading = "lazy";
+
+  imagen.onload = () => {
+    const tarjeta = document.createElement("figure");
+    tarjeta.className = "captura";
+    tarjeta.appendChild(imagen);
+    const pie = document.createElement("figcaption");
+    pie.className = "captura-pie";
+    pie.innerHTML = `<p class="captura-titulo">${c.titulo}</p><p class="captura-texto">${c.texto}</p>`;
+    tarjeta.appendChild(pie);
+    rejillaCapturas.appendChild(tarjeta);
+    capturasVisibles++;
+  };
+
+  // Si el archivo todavia no existe, esa tarjeta simplemente no aparece.
+  imagen.onerror = () => {};
+});
+
+// Si no hay ninguna captura, escondemos la seccion entera.
+window.addEventListener("load", () => {
+  if (capturasVisibles === 0) seccionCapturas.style.display = "none";
+});
 
 const WA = "https://wa.me/19543019626";
 const rejilla = document.getElementById("rejilla");
