@@ -1,0 +1,11 @@
+# Carpeta de trabajo de las capturas (originales sin recortar). No va al sitio.
+capturas_tmp/
+
+# Respaldo del index anterior
+index_ANTERIOR.html
+*.bak
+
+# Basura del sistema
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,162 +1,106 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HyperCode — Sistemas para negocios que venden todos los días</title>
-<meta name="description" content="Software de inventario y punto de venta para farmacias, tiendas, ferreterias y boutiques en Guatemala. Instalación remota, licencia anual desde Q1,200. Prueba gratis 3 meses.">
+<title>HyperCode</title>
+<meta name="description" content="Sistemas de inventario, punto de venta y control de rentas para negocios de Guatemala. Funcionan sin internet, se instalan en su computadora. También desarrollamos software a la medida.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E0C09'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23DCA84A'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* ============================================================
-   PARA EDITAR RÁPIDO:
-   - Tu WhatsApp: busca  19543019626
-   - Precios y proyectos: hasta abajo, en la lista PROYECTOS
-   ============================================================ */
-
+/* ==========================================================================
+   HyperCode — laca de jícara de Rabinal
+   Comprometida con un solo mundo visual: oscuro, lacado, cálido.
+   ========================================================================== */
 :root{
-  /* Paleta: laca de jícara de Rabinal */
-  --laca:        #100E0B;
-  --laca-alta:   #1A1611;
-  --laca-borde:  #2C251C;
-  --ocre:        #DCA84A;
-  --achiote:     #C4482F;
-  --jade:        #4F8B7A;
-  --hueso:       #EFE7D7;
-  --hueso-tenue: #988D7B;
-
-  --display: "Bricolage Grotesque", system-ui, sans-serif;
-  --texto:   "Karla", system-ui, sans-serif;
-  --mono:    "JetBrains Mono", monospace;
-
-  --ancho: 1140px;
+  --laca:#0E0C09; --laca-alta:#17130E; --laca-honda:#080706;
+  --borde:#2C251C; --borde-vivo:#453A2B;
+  --ocre:#DCA84A; --ocre-tenue:#8A6A2E; --achiote:#C4482F; --jade:#5A9B88;
+  --hueso:#EFE7D7; --hueso-medio:#B5AA96; --hueso-tenue:#8C826F;
+  --papel:#F6F1E6; --papel-tinta:#1C1710; --papel-gris:#7C7263;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --texto:"Karla",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"Courier New",monospace;
+  --ancho:1180px; --r-chico:10px; --r-medio:16px;
 }
-
 *{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
-
 body{
-  background:var(--laca);
-  color:var(--hueso);
-  font-family:var(--texto);
-  font-size:17px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  background:var(--laca); color:var(--hueso); font-family:var(--texto);
+  font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;
 }
 body::before{
-  content:"";
-  position:fixed; inset:0;
-  pointer-events:none; z-index:0;
-  opacity:.035;
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.04;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-
 .envoltura{ position:relative; z-index:1; }
 .contenedor{ width:100%; max-width:var(--ancho); margin:0 auto; padding:0 28px; }
 a{ color:inherit; }
+:focus-visible{ outline:2px solid var(--ocre); outline-offset:3px; border-radius:3px; }
+button{ font:inherit; color:inherit; }
 
-:focus-visible{ outline:2px solid var(--ocre); outline-offset:3px; border-radius:2px; }
-
-.barras{
-  height:34px;
-  background-image:repeating-linear-gradient(
-    90deg,
-    var(--laca-borde) 0px, var(--laca-borde) 2px,
-    transparent 2px, transparent 5px,
-    var(--laca-borde) 5px, var(--laca-borde) 6px,
-    transparent 6px, transparent 11px,
-    var(--laca-borde) 11px, var(--laca-borde) 14px,
-    transparent 14px, transparent 16px
-  );
-  opacity:.75;
+.cenefa{
+  height:26px;
+  background-image:repeating-linear-gradient(90deg,
+    var(--borde) 0 2px, transparent 2px 5px,
+    var(--borde) 5px 6px, transparent 6px 11px,
+    var(--borde) 11px 14px, transparent 14px 16px);
+  opacity:.7;
 }
 
-/* ---------- Encabezado ---------- */
+/* ---------------- Encabezado ---------------- */
 .encabezado{
-  position:sticky; top:0; z-index:50;
-  background:rgba(16,14,11,.82);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--laca-borde);
+  position:sticky; top:0; z-index:60; background:rgba(14,12,9,.88);
+  backdrop-filter:blur(16px); border-bottom:1px solid var(--borde);
 }
-.encabezado .contenedor{
-  display:flex; align-items:center; justify-content:space-between; height:70px;
-}
-.marca{
-  font-family:var(--display); font-weight:800;
-  font-size:1.2rem; letter-spacing:-.03em;
-  text-decoration:none; display:flex; align-items:center; gap:11px;
-}
-.marca-signo{
-  font-family:var(--mono); font-weight:700;
-  color:var(--ocre); font-size:1.05rem;
-}
-.nav-acciones{ display:flex; align-items:center; gap:22px; }
-.nav-enlace{ font-size:.92rem; color:var(--hueso-tenue); text-decoration:none; transition:color .2s; }
+.encabezado .contenedor{ display:flex; align-items:center; justify-content:space-between; height:68px; gap:20px; }
+.marca{ font-family:var(--display); font-weight:800; font-size:1.18rem; letter-spacing:-.03em;
+  text-decoration:none; display:flex; align-items:center; gap:11px; white-space:nowrap; }
+.marca-signo{ font-family:var(--mono); font-weight:700; color:var(--ocre); font-size:1rem; }
+.nav{ display:flex; align-items:center; gap:24px; }
+.nav-enlace{ font-size:.9rem; color:var(--hueso-tenue); text-decoration:none; transition:color .2s; white-space:nowrap; }
 .nav-enlace:hover{ color:var(--hueso); }
 
-/* ---------- Botón WhatsApp ---------- */
-.boton-wa{
-  display:inline-flex; align-items:center; gap:10px;
-  background:var(--ocre); color:#100E0B;
-  font-family:var(--texto); font-weight:700; font-size:.95rem;
-  padding:12px 22px; border-radius:100px;
-  text-decoration:none; border:none; cursor:pointer;
+/* ---------------- Botones ---------------- */
+.wa{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  background:var(--ocre); color:var(--laca-honda); font-weight:700; font-size:.94rem;
+  padding:12px 22px; border-radius:100px; text-decoration:none; border:none; cursor:pointer;
   transition:transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s;
 }
-.boton-wa:hover{ transform:translateY(-2px); box-shadow:0 10px 28px -8px rgba(220,168,74,.55); }
-.boton-wa svg{ width:19px; height:19px; flex-shrink:0; }
-.boton-wa--grande{ padding:17px 34px; font-size:1.06rem; }
-.boton-wa--fantasma{ background:transparent; color:var(--hueso); border:1px solid var(--laca-borde); }
-.boton-wa--fantasma:hover{ border-color:var(--ocre); color:var(--ocre); box-shadow:none; }
+.wa:hover{ transform:translateY(-2px); box-shadow:0 12px 30px -10px rgba(220,168,74,.6); }
+.wa svg{ width:19px; height:19px; flex-shrink:0; }
+.wa--grande{ padding:17px 32px; font-size:1.05rem; }
+.wa--fantasma{ background:transparent; color:var(--hueso); border:1px solid var(--borde-vivo); }
+.wa--fantasma:hover{ border-color:var(--ocre); color:var(--ocre); box-shadow:none; }
 
-/* ---------- Portada ---------- */
-.portada{ padding:88px 0 100px; }
-.portada .contenedor{
-  display:grid; grid-template-columns:1.05fr .95fr; gap:76px; align-items:center;
-}
+/* ---------------- Portada ---------------- */
+.portada{ padding:76px 0 68px; }
+.portada .contenedor{ display:grid; grid-template-columns:1.08fr .92fr; gap:70px; align-items:center; }
 .cejilla{
-  font-family:var(--mono); font-size:.76rem;
-  letter-spacing:.16em; text-transform:uppercase;
-  color:var(--ocre);
-  display:flex; align-items:center; gap:12px; margin-bottom:26px;
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--ocre); display:flex; align-items:center; gap:12px; margin-bottom:24px;
 }
-.cejilla::after{
-  content:""; height:1px; flex:1; max-width:80px;
-  background:linear-gradient(90deg,var(--ocre),transparent);
-}
+.cejilla::after{ content:""; height:1px; flex:1; max-width:78px; background:linear-gradient(90deg,var(--ocre),transparent); }
 .titulo-portada{
-  font-family:var(--display); font-weight:800;
-  font-size:clamp(2.5rem,5.4vw,4.15rem);
-  line-height:1.02; letter-spacing:-.035em; margin-bottom:26px;
+  font-family:var(--display); font-weight:800; font-size:clamp(2.5rem,5.3vw,4.1rem);
+  line-height:1.02; letter-spacing:-.038em; margin-bottom:24px; text-wrap:balance;
 }
 .titulo-portada em{ font-style:normal; color:var(--ocre); position:relative; white-space:nowrap; }
-.titulo-portada em::after{
-  content:""; position:absolute; left:0; right:0; bottom:.07em; height:.09em;
-  background:var(--achiote); opacity:.85;
+.titulo-portada em::after{ content:""; position:absolute; left:0; right:0; bottom:.06em; height:.085em; background:var(--achiote); opacity:.85; }
+.entrada{ font-size:1.13rem; color:var(--hueso-medio); max-width:46ch; margin-bottom:26px; }
+.insignia{
+  display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:.76rem;
+  letter-spacing:.06em; color:var(--jade); background:rgba(90,155,136,.12);
+  border:1px solid rgba(90,155,136,.3); padding:9px 16px; border-radius:100px; margin-bottom:28px;
 }
-.entrada-portada{ font-size:1.14rem; color:var(--hueso-tenue); max-width:44ch; margin-bottom:30px; }
-.insignia-prueba{
-  display:inline-flex; align-items:center; gap:10px;
-  font-family:var(--mono); font-size:.78rem; letter-spacing:.08em;
-  color:var(--jade); background:rgba(79,139,122,.13);
-  border:1px solid rgba(79,139,122,.28);
-  padding:9px 17px; border-radius:100px; margin-bottom:32px;
-}
-.acciones-portada{ display:flex; flex-wrap:wrap; gap:14px; }
+.acciones{ display:flex; flex-wrap:wrap; gap:13px; }
 
-/* ---------- El recibo (elemento firma) ---------- */
+/* ---------------- Recibo ---------------- */
 .marco-recibo{ display:flex; justify-content:center; }
 .recibo{
-  width:100%; max-width:352px;
-  background:linear-gradient(178deg,#F6F1E6,#E6DECE);
-  color:#1C1710;
-  font-family:var(--mono); font-size:.79rem; line-height:1.75;
-  padding:32px 28px 24px; position:relative;
-  box-shadow:0 34px 70px -22px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.05);
-  transform:rotate(-1.3deg);
+  width:100%; max-width:340px; background:linear-gradient(178deg,var(--papel),#E6DECE);
+  color:var(--papel-tinta); font-family:var(--mono); font-size:.78rem; line-height:1.72;
+  padding:30px 26px 22px; position:relative; transform:rotate(-1.3deg);
+  box-shadow:0 36px 72px -24px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.05);
 }
 .recibo::after{
   content:""; position:absolute; left:0; right:0; bottom:-11px; height:12px;
@@ -164,352 +108,309 @@ a{ color:inherit; }
     linear-gradient(-45deg, transparent 50%, #E6DECE 50%) 0 0/13px 13px repeat-x,
     linear-gradient(45deg, transparent 50%, #E6DECE 50%) 0 0/13px 13px repeat-x;
 }
-.recibo-negocio{
-  font-family:var(--display); font-weight:800; font-size:1.22rem;
-  text-align:center; letter-spacing:-.02em; line-height:1.2;
-}
-.recibo-sub{
-  text-align:center; font-size:.68rem; letter-spacing:.14em;
-  text-transform:uppercase; color:#7C7263; margin-bottom:16px;
-}
-.recibo-regla{ border-top:1px dashed #B6AC99; margin:11px 0; }
-.recibo-fila{ display:flex; justify-content:space-between; gap:14px; }
+.recibo-negocio{ font-family:var(--display); font-weight:800; font-size:1.2rem; text-align:center; letter-spacing:-.02em; line-height:1.2; }
+.recibo-sub{ text-align:center; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--papel-gris); margin-bottom:14px; }
+.recibo-regla{ border-top:1px dashed #B6AC99; margin:10px 0; }
+.recibo-fila{ display:flex; justify-content:space-between; gap:14px; font-variant-numeric:tabular-nums; }
 .recibo-fila span:first-child{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.recibo-total{ font-weight:700; font-size:1.06rem; display:flex; justify-content:space-between; padding-top:4px; }
-.recibo-pie{ text-align:center; font-size:.68rem; color:#7C7263; margin-top:14px; }
+.recibo-total{ font-weight:700; font-size:1.04rem; display:flex; justify-content:space-between; padding-top:3px; font-variant-numeric:tabular-nums; }
+.recibo-pie{ text-align:center; font-size:.66rem; color:var(--papel-gris); margin-top:12px; }
 .recibo-barras{
-  height:36px; margin-top:16px;
-  background-image:repeating-linear-gradient(
-    90deg,#1C1710 0 2px, transparent 2px 4px,
-    #1C1710 4px 5px, transparent 5px 9px,
-    #1C1710 9px 12px, transparent 12px 14px
-  );
+  height:34px; margin-top:14px;
+  background-image:repeating-linear-gradient(90deg,
+    var(--papel-tinta) 0 2px, transparent 2px 4px,
+    var(--papel-tinta) 4px 5px, transparent 5px 9px,
+    var(--papel-tinta) 9px 12px, transparent 12px 14px);
 }
-.etiqueta-telegram{
-  position:absolute; right:-15px; top:44px;
-  background:var(--jade); color:#08120F;
-  font-family:var(--texto); font-weight:700; font-size:.7rem;
-  padding:6px 13px; border-radius:100px;
-  box-shadow:0 8px 22px -6px rgba(0,0,0,.65);
-  transform:rotate(3.5deg); white-space:nowrap;
+.etiqueta-flotante{
+  position:absolute; right:-14px; top:42px; background:var(--jade); color:#08120F;
+  font-weight:700; font-size:.69rem; padding:6px 13px; border-radius:100px;
+  box-shadow:0 8px 22px -6px rgba(0,0,0,.7); transform:rotate(3.5deg); white-space:nowrap;
 }
-.aparece{ opacity:0; animation:subir .5s cubic-bezier(.2,.8,.3,1) forwards; }
-@keyframes subir{ from{opacity:0;transform:translateY(9px)} to{opacity:1;transform:none} }
 
-/* ---------- Secciones ---------- */
-.seccion{ padding:96px 0; }
+/* ---------------- Secciones ---------------- */
+.seccion{ padding:88px 0; }
 .seccion--alta{ background:var(--laca-alta); }
-.cabeza-seccion{ max-width:60ch; margin-bottom:52px; }
+.cabeza{ max-width:62ch; margin-bottom:46px; }
 .titulo-seccion{
-  font-family:var(--display); font-weight:800;
-  font-size:clamp(1.85rem,3.4vw,2.7rem);
-  letter-spacing:-.03em; line-height:1.1; margin-bottom:15px;
+  font-family:var(--display); font-weight:800; font-size:clamp(1.8rem,3.3vw,2.6rem);
+  letter-spacing:-.032em; line-height:1.1; margin-bottom:13px; text-wrap:balance;
 }
-.texto-seccion{ color:var(--hueso-tenue); font-size:1.06rem; }
+.texto-seccion{ color:var(--hueso-medio); font-size:1.05rem; }
 
-/* ---------- Tarjetas de proyecto ---------- */
-.rejilla-proyectos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:22px; }
-.tarjeta{
-  position:relative; text-align:left;
-  background:var(--laca); color:inherit;
-  border:1px solid var(--laca-borde); border-radius:15px;
-  padding:32px 28px 28px; cursor:pointer; font:inherit;
-  transition:transform .25s cubic-bezier(.2,.8,.3,1), border-color .25s;
-  overflow:hidden;
+/* ==========================================================================
+   EL MOSTRADOR
+   ========================================================================== */
+.mostrador{ display:grid; grid-template-columns:1.55fr .95fr; gap:26px; align-items:start; }
+.caja{
+  background:var(--laca-honda); border:1px solid var(--borde); border-radius:var(--r-medio);
+  overflow:hidden; box-shadow:0 30px 60px -30px rgba(0,0,0,.9);
 }
-.seccion--alta .tarjeta{ background:var(--laca-alta); }
-.tarjeta::before{
-  content:""; position:absolute; left:0; right:0; top:0; height:2px;
-  background:linear-gradient(90deg,var(--ocre),var(--achiote));
-  transform:scaleX(0); transform-origin:left;
-  transition:transform .35s cubic-bezier(.2,.8,.3,1);
+.caja-barra{ display:flex; align-items:center; gap:10px; padding:12px 16px; background:var(--laca-alta); border-bottom:1px solid var(--borde); }
+.caja-luces{ display:flex; gap:6px; }
+.caja-luces i{ width:10px; height:10px; border-radius:50%; background:var(--borde-vivo); display:block; }
+.caja-titulo{ font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--hueso-tenue); }
+.caja-cuerpo{ padding:20px; }
+.escaneo{
+  display:flex; align-items:center; gap:12px; background:var(--laca);
+  border:1px solid var(--borde); border-radius:var(--r-chico); padding:13px 16px; margin-bottom:18px;
 }
-.tarjeta:hover{ transform:translateY(-5px); border-color:#42382A; }
-.tarjeta:hover::before{ transform:scaleX(1); }
-.tarjeta-estado{
-  font-family:var(--mono); font-size:.68rem;
-  letter-spacing:.13em; text-transform:uppercase;
-  display:inline-flex; align-items:center; gap:8px;
-  padding:5px 12px; border-radius:100px; margin-bottom:20px;
+.escaneo-icono{ color:var(--ocre); flex-shrink:0; display:flex; }
+.escaneo-icono svg{ width:20px; height:20px; }
+.escaneo-texto{ font-family:var(--mono); font-size:.82rem; color:var(--hueso-tenue); }
+.escaneo-cursor{ display:inline-block; width:8px; height:1.05em; background:var(--ocre); vertical-align:-2px; margin-left:2px; animation:latir 1.1s steps(1) infinite; }
+@keyframes latir{ 0%,50%{opacity:1} 51%,100%{opacity:0} }
+.rotulo-mini{ font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hueso-tenue); margin-bottom:11px; }
+.productos{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:22px; }
+.producto{
+  background:var(--laca); border:1px solid var(--borde); border-radius:var(--r-chico);
+  padding:12px 13px 11px; text-align:left; cursor:pointer;
+  transition:border-color .18s, transform .18s;
 }
-.estado--activo{ background:rgba(79,139,122,.16); color:var(--jade); }
-.estado--pronto{ background:rgba(152,141,123,.12); color:var(--hueso-tenue); }
-.tarjeta-titulo{
-  font-family:var(--display); font-weight:800; font-size:1.42rem;
-  letter-spacing:-.025em; line-height:1.18; margin-bottom:11px;
+.producto:hover:not(:disabled){ border-color:var(--ocre-tenue); transform:translateY(-2px); }
+.producto:disabled{ opacity:.4; cursor:not-allowed; }
+.producto-nombre{ font-size:.86rem; font-weight:500; line-height:1.3; margin-bottom:5px; display:block; }
+.producto-precio{ font-family:var(--mono); font-size:.84rem; color:var(--ocre); font-variant-numeric:tabular-nums; display:block; }
+.producto-stock{ font-family:var(--mono); font-size:.66rem; color:var(--hueso-tenue); margin-top:4px; display:block; }
+.producto-stock.bajo{ color:var(--achiote); }
+.producto-stock b{ font-weight:700; font-variant-numeric:tabular-nums; }
+.ticket{
+  background:var(--laca); border:1px solid var(--borde); border-radius:var(--r-chico);
+  padding:6px 0; min-height:132px; display:flex; flex-direction:column; justify-content:center;
 }
-.tarjeta-texto{ color:var(--hueso-tenue); font-size:.97rem; margin-bottom:20px; }
-.tarjeta-precio{
-  font-family:var(--display); font-weight:600; font-size:1.15rem;
-  color:var(--ocre); margin-bottom:20px;
-}
-.tarjeta-precio small{
-  font-family:var(--texto); font-weight:400; font-size:.82rem;
-  color:var(--hueso-tenue); display:block; margin-top:2px;
-}
-.tarjeta-para{
-  font-family:var(--mono); font-size:.72rem; color:var(--hueso-tenue);
-  letter-spacing:.05em; padding-top:18px; border-top:1px solid var(--laca-borde);
-  display:flex; justify-content:space-between; align-items:center; gap:12px;
-}
-.tarjeta-ver{ color:var(--ocre); display:inline-flex; align-items:center; gap:7px; }
-.tarjeta-ver svg{ width:13px; height:13px; transition:transform .25s; }
-.tarjeta:hover .tarjeta-ver svg{ transform:translateX(4px); }
-
-/* ---------- Ficha (modal) ---------- */
-.velo{
-  position:fixed; inset:0; z-index:100;
-  background:rgba(8,7,5,.8); backdrop-filter:blur(7px);
-  display:none; align-items:flex-start; justify-content:center;
-  padding:5vh 20px; overflow-y:auto;
-}
-.velo.abierto{ display:flex; }
-.ficha{
-  width:100%; max-width:730px;
-  background:var(--laca-alta); border:1px solid var(--laca-borde);
-  border-radius:19px; padding:44px 44px 38px; position:relative;
-  animation:entraFicha .34s cubic-bezier(.2,.8,.3,1);
-}
-@keyframes entraFicha{ from{opacity:0;transform:translateY(22px) scale(.985)} to{opacity:1;transform:none} }
-.ficha-cerrar{
-  position:absolute; top:20px; right:20px;
-  width:38px; height:38px; border-radius:50%;
-  background:var(--laca); border:1px solid var(--laca-borde);
-  color:var(--hueso-tenue); font-size:1.15rem; line-height:1; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:color .2s, border-color .2s;
-}
-.ficha-cerrar:hover{ color:var(--hueso); border-color:#42382A; }
-.ficha-titulo{
-  font-family:var(--display); font-weight:800; font-size:2.05rem;
-  letter-spacing:-.03em; line-height:1.1; margin:14px 0 12px;
-}
-.ficha-entrada{ color:var(--hueso-tenue); margin-bottom:34px; max-width:56ch; }
-.ficha-rotulo{
-  font-family:var(--mono); font-size:.71rem; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--ocre); margin-bottom:16px;
-}
-.ficha-bloque{ margin-bottom:34px; }
-.ficha-parrafo{ color:var(--hueso-tenue); font-size:.99rem; }
-.lista-incluye{ list-style:none; display:grid; gap:11px; }
-.lista-incluye li{ display:flex; gap:13px; align-items:flex-start; font-size:.99rem; }
-.lista-incluye li::before{
-  content:""; flex-shrink:0; width:6px; height:6px; margin-top:.62em;
-  border-radius:50%; background:var(--jade);
+.ticket-vacio{ text-align:center; color:var(--hueso-tenue); font-size:.9rem; padding:26px 20px; }
+.linea{ display:grid; grid-template-columns:1fr auto auto auto; gap:12px; align-items:center; padding:9px 16px; font-size:.9rem; }
+.linea + .linea{ border-top:1px solid var(--borde); }
+.linea-nombre{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.linea-cant{ font-family:var(--mono); font-size:.82rem; color:var(--hueso-tenue); font-variant-numeric:tabular-nums; }
+.linea-monto{ font-family:var(--mono); font-size:.88rem; font-variant-numeric:tabular-nums; min-width:66px; text-align:right; }
+.linea-quitar{ background:none; border:none; cursor:pointer; color:var(--hueso-tenue); font-size:1.05rem; line-height:1; padding:2px 4px; border-radius:4px; transition:color .18s; }
+.linea-quitar:hover{ color:var(--achiote); }
+.total-fila{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:18px 0 14px; }
+.total-rotulo{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hueso-tenue); }
+.total-monto{ font-family:var(--display); font-weight:800; font-size:2.5rem; letter-spacing:-.035em; line-height:1; font-variant-numeric:tabular-nums; }
+.acciones-caja{ display:flex; gap:10px; }
+.acciones-caja .wa{ flex:1; }
+.panel-lado{ display:flex; flex-direction:column; gap:20px; }
+.telefono{ background:var(--laca-honda); border:1px solid var(--borde); border-radius:26px; padding:14px 12px 18px; box-shadow:0 30px 60px -30px rgba(0,0,0,.9); }
+.telefono-muesca{ width:46%; height:5px; border-radius:100px; background:var(--borde); margin:0 auto 14px; }
+.telefono-hora{ display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:.68rem; color:var(--hueso-tenue); padding:0 8px 12px; }
+.aviso{ background:var(--laca-alta); border:1px solid var(--borde); border-radius:13px; padding:13px 14px; }
+.aviso + .aviso{ margin-top:9px; }
+.aviso-cabeza{ display:flex; align-items:center; gap:8px; margin-bottom:7px; font-family:var(--mono); font-size:.65rem; letter-spacing:.09em; text-transform:uppercase; color:var(--jade); }
+.aviso-punto{ width:6px; height:6px; border-radius:50%; background:var(--jade); flex-shrink:0; }
+.aviso-cabeza.alerta{ color:var(--achiote); }
+.aviso-cabeza.alerta .aviso-punto{ background:var(--achiote); }
+.aviso-titulo{ font-size:.9rem; font-weight:700; margin-bottom:3px; }
+.aviso-texto{ font-size:.82rem; color:var(--hueso-medio); line-height:1.5; }
+.aviso-espera{ text-align:center; color:var(--hueso-tenue); font-size:.84rem; padding:22px 12px; }
+.aviso--nuevo{ animation:llega .42s cubic-bezier(.2,.8,.3,1); }
+@keyframes llega{ from{opacity:0; transform:translateY(-10px) scale(.97)} to{opacity:1; transform:none} }
+.nota-demo{ font-family:var(--mono); font-size:.7rem; color:var(--hueso-tenue); line-height:1.6; text-align:center; }
+.salida-recibo{ margin-top:20px; display:none; }
+.salida-recibo.visible{ display:block; animation:imprimir .7s cubic-bezier(.2,.8,.3,1); }
+@keyframes imprimir{
+  from{ opacity:0; transform:translateY(-26px); clip-path:inset(0 0 100% 0); }
+  to{ opacity:1; transform:none; clip-path:inset(0 0 0 0); }
 }
 
-/* Precios dentro de la ficha */
-.rejilla-planes{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
-.plan{
-  background:var(--laca); border:1px solid var(--laca-borde);
-  border-radius:13px; padding:24px 24px 22px; position:relative;
-}
-.plan--destacado{ border-color:rgba(220,168,74,.45); }
-.plan-nombre{
-  font-family:var(--mono); font-size:.7rem; letter-spacing:.13em;
-  text-transform:uppercase; color:var(--hueso-tenue); margin-bottom:10px;
-}
-.plan-monto{
-  font-family:var(--display); font-weight:800; font-size:2rem;
-  letter-spacing:-.03em; line-height:1; margin-bottom:4px;
-}
-.plan-periodo{ font-size:.82rem; color:var(--hueso-tenue); margin-bottom:14px; }
-.plan-detalle{ font-size:.9rem; color:var(--hueso-tenue); }
-.plan-extra{
-  background:var(--laca); border:1px solid var(--laca-borde);
-  border-radius:13px; padding:20px 24px;
-  display:flex; justify-content:space-between; align-items:center;
-  gap:18px; flex-wrap:wrap; margin-bottom:16px;
-}
-.plan-extra-texto{ font-size:.93rem; color:var(--hueso-tenue); max-width:44ch; }
-.plan-extra-monto{
-  font-family:var(--display); font-weight:700; font-size:1.35rem; color:var(--ocre);
-  white-space:nowrap;
-}
-.caja-garantia{
-  background:rgba(79,139,122,.09);
-  border:1px solid rgba(79,139,122,.24);
-  border-radius:13px; padding:22px 26px; margin-bottom:32px;
-}
-.garantia-lista{ list-style:none; display:grid; gap:9px; }
-.garantia-lista li{ font-size:.94rem; color:var(--hueso-tenue); display:flex; gap:11px; }
-.garantia-lista li::before{ content:"—"; color:var(--jade); flex-shrink:0; }
-.garantia-lista strong{ color:var(--hueso); font-weight:700; }
-.ficha-nota{ font-size:.87rem; color:var(--hueso-tenue); margin-top:18px; text-align:center; }
+/* ==========================================================================
+   Antes / después
+   ========================================================================== */
+.contraste{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.columna{ border:1px solid var(--borde); border-radius:var(--r-medio); padding:30px 30px 26px; background:var(--laca); }
+.seccion--alta .columna{ background:var(--laca-alta); }
+.columna--nuestra{ border-color:var(--ocre-tenue); }
+.columna-rotulo{ font-family:var(--mono); font-size:.69rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:18px; color:var(--hueso-tenue); }
+.columna--nuestra .columna-rotulo{ color:var(--ocre); }
+.lista-contraste{ list-style:none; display:grid; gap:13px; }
+.lista-contraste li{ display:flex; gap:12px; align-items:flex-start; font-size:.98rem; color:var(--hueso-medio); }
+.lista-contraste li::before{ content:"×"; color:var(--achiote); font-weight:700; flex-shrink:0; width:14px; }
+.columna--nuestra .lista-contraste li{ color:var(--hueso); }
+.columna--nuestra .lista-contraste li::before{ content:"✓"; color:var(--jade); }
 
-/* ---------- Cómo trabajo ---------- */
-.pasos{ display:grid; gap:2px; background:var(--laca-borde); border-radius:14px; overflow:hidden; }
-.paso{
-  background:var(--laca-alta); padding:28px 32px;
-  display:grid; grid-template-columns:64px 1fr; gap:24px; align-items:start;
+/* ==========================================================================
+   SISTEMAS — bloque de producto con visor de capturas
+   ========================================================================== */
+.sistema{ border-top:1px solid var(--borde); padding-top:52px; margin-top:52px; }
+.sistema:first-of-type{ border-top:none; padding-top:0; margin-top:0; }
+.sistema-cabeza{ display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:start; margin-bottom:34px; }
+.sistema-para{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ocre); margin-bottom:12px;
 }
-.seccion--alta .paso{ background:var(--laca); }
-.paso-num{ font-family:var(--mono); font-size:.79rem; color:var(--ocre); padding-top:.34em; }
-.paso-titulo{ font-family:var(--display); font-weight:600; font-size:1.16rem; margin-bottom:6px; }
-.paso-texto{ color:var(--hueso-tenue); font-size:.97rem; }
+.sistema-titulo{ font-family:var(--display); font-weight:800; font-size:clamp(1.6rem,2.8vw,2.15rem); letter-spacing:-.032em; line-height:1.12; margin-bottom:14px; }
+.sistema-texto{ color:var(--hueso-medio); font-size:1.02rem; margin-bottom:20px; }
+.sistema-lista{ list-style:none; display:grid; gap:10px; }
+.sistema-lista li{ display:flex; gap:11px; align-items:flex-start; font-size:.95rem; color:var(--hueso-medio); }
+.sistema-lista li::before{ content:""; flex-shrink:0; width:5px; height:5px; margin-top:.62em; border-radius:50%; background:var(--jade); }
 
-/* ---------- Preguntas ---------- */
-.preguntas{ display:grid; gap:2px; background:var(--laca-borde); border-radius:14px; overflow:hidden; }
-.pregunta{ background:var(--laca-alta); }
-.seccion--alta .pregunta{ background:var(--laca); }
+.precio-caja{ border:1px solid var(--borde); border-radius:var(--r-medio); padding:26px 28px 24px; background:var(--laca); }
+.seccion--alta .precio-caja{ background:var(--laca-alta); }
+.precio-caja + .precio-caja{ margin-top:14px; }
+.precio-caja--destacada{ border-color:var(--ocre-tenue); }
+.precio-nombre{ font-family:var(--mono); font-size:.69rem; letter-spacing:.14em; text-transform:uppercase; color:var(--hueso-tenue); margin-bottom:9px; }
+.precio-monto{ font-family:var(--display); font-weight:800; font-size:2.4rem; letter-spacing:-.04em; line-height:1; margin-bottom:5px; font-variant-numeric:tabular-nums; }
+.precio-periodo{ font-size:.84rem; color:var(--hueso-tenue); margin-bottom:14px; }
+.precio-detalle{ font-size:.93rem; color:var(--hueso-medio); margin-bottom:18px; }
+.precio-caja .wa{ width:100%; }
+.precio-nota{ font-size:.86rem; color:var(--hueso-tenue); line-height:1.6; margin-top:14px; padding:0 4px; }
+.precio-nota strong{ color:var(--hueso-medio); font-weight:700; }
+
+/* Visor de capturas */
+.visor{ border:1px solid var(--borde); border-radius:var(--r-medio); overflow:hidden; background:var(--laca-honda); }
+.visor-pestanas{ display:flex; gap:1px; background:var(--borde); border-bottom:1px solid var(--borde); flex-wrap:wrap; }
+.pestana{
+  flex:1; min-width:130px; background:var(--laca-alta); border:none; cursor:pointer;
+  padding:14px 16px; font-family:var(--mono); font-size:.72rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--hueso-tenue); transition:color .18s, background .18s;
+}
+.pestana:hover{ color:var(--hueso); }
+.pestana[aria-selected="true"]{ background:var(--laca-honda); color:var(--ocre); }
+.visor-marco{ padding:0; background:var(--laca-honda); }
+.visor-marco img{ display:block; width:100%; height:auto; }
+.visor-pie{ padding:16px 22px 18px; border-top:1px solid var(--borde); }
+.visor-titulo{ font-family:var(--display); font-weight:600; font-size:1.05rem; letter-spacing:-.02em; margin-bottom:5px; }
+.visor-texto{ color:var(--hueso-medio); font-size:.93rem; }
+.visor-nota{ font-family:var(--mono); font-size:.68rem; color:var(--hueso-tenue); text-align:center; margin-top:12px; }
+
+/* ==========================================================================
+   A la medida
+   ========================================================================== */
+.medida{
+  border:1px solid var(--ocre-tenue); border-radius:var(--r-medio);
+  padding:48px 48px 44px; background:var(--laca);
+  display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center;
+}
+.seccion--alta .medida{ background:var(--laca-alta); }
+.medida-titulo{ font-family:var(--display); font-weight:800; font-size:clamp(1.7rem,3vw,2.3rem); letter-spacing:-.034em; line-height:1.1; margin-bottom:16px; text-wrap:balance; }
+.medida-texto{ color:var(--hueso-medio); font-size:1.04rem; margin-bottom:14px; }
+.medida-texto strong{ color:var(--hueso); font-weight:700; }
+.medida-ejemplos{ list-style:none; display:grid; gap:12px; }
+.medida-ejemplos li{ display:flex; gap:13px; align-items:flex-start; font-size:.97rem; color:var(--hueso-medio); }
+.medida-ejemplos li::before{
+  content:""; flex-shrink:0; width:7px; height:7px; margin-top:.55em;
+  background:var(--ocre); transform:rotate(45deg);
+}
+.medida-ejemplos strong{ color:var(--hueso); font-weight:700; }
+
+/* ==========================================================================
+   Proceso, preguntas, nosotros, cierre
+   ========================================================================== */
+.pasos{ display:grid; gap:1px; background:var(--borde); border-radius:var(--r-medio); overflow:hidden; }
+.paso{ background:var(--laca); padding:26px 30px; display:grid; grid-template-columns:56px 1fr; gap:22px; align-items:start; }
+.seccion--alta .paso{ background:var(--laca-alta); }
+.paso-num{ font-family:var(--mono); font-size:.78rem; color:var(--ocre); padding-top:.32em; }
+.paso-titulo{ font-family:var(--display); font-weight:600; font-size:1.14rem; margin-bottom:5px; }
+.paso-texto{ color:var(--hueso-medio); font-size:.96rem; }
+
+.preguntas{ display:grid; gap:1px; background:var(--borde); border-radius:var(--r-medio); overflow:hidden; }
+.pregunta{ background:var(--laca); }
+.seccion--alta .pregunta{ background:var(--laca-alta); }
 .pregunta summary{
-  padding:24px 30px; cursor:pointer; list-style:none;
-  font-family:var(--display); font-weight:600; font-size:1.08rem;
-  display:flex; justify-content:space-between; align-items:center; gap:18px;
-  transition:color .2s;
+  padding:22px 28px; cursor:pointer; list-style:none; font-family:var(--display);
+  font-weight:600; font-size:1.06rem; display:flex; justify-content:space-between;
+  align-items:center; gap:18px; transition:color .2s;
 }
 .pregunta summary::-webkit-details-marker{ display:none; }
-.pregunta summary::after{
-  content:"+"; font-family:var(--mono); color:var(--ocre);
-  font-size:1.3rem; flex-shrink:0; transition:transform .25s;
-}
+.pregunta summary::after{ content:"+"; font-family:var(--mono); color:var(--ocre); font-size:1.28rem; flex-shrink:0; transition:transform .25s; }
 .pregunta[open] summary::after{ transform:rotate(45deg); }
 .pregunta summary:hover{ color:var(--ocre); }
-.pregunta-cuerpo{ padding:0 30px 26px; color:var(--hueso-tenue); font-size:.99rem; max-width:70ch; }
+.pregunta-cuerpo{ padding:0 28px 24px; color:var(--hueso-medio); font-size:.97rem; max-width:72ch; }
+.pregunta-cuerpo strong{ color:var(--hueso); font-weight:700; }
 
-
-/* ---------- Capturas del sistema ---------- */
-.rejilla-capturas{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px;
+.nosotros{ display:grid; grid-template-columns:1.15fr .85fr; gap:54px; align-items:start; }
+.firma{ display:flex; align-items:center; gap:19px; margin-bottom:24px; }
+.sello{
+  width:66px; height:66px; border-radius:50%; flex-shrink:0; background:var(--laca-alta);
+  border:1px solid var(--borde); display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-weight:800; font-size:1.36rem; letter-spacing:-.03em; color:var(--ocre);
 }
-.captura{
-  background:var(--laca-alta); border:1px solid var(--laca-borde);
-  border-radius:14px; overflow:hidden;
-}
-.seccion--alta .captura{ background:var(--laca); }
-.captura img{
-  display:block; width:100%; height:auto;
-  border-bottom:1px solid var(--laca-borde);
-}
-.captura-pie{ padding:16px 20px 18px; }
-.captura-titulo{
-  font-family:var(--display); font-weight:600; font-size:1.05rem;
-  letter-spacing:-.02em; margin-bottom:6px;
-}
-.captura-texto{ color:var(--hueso-tenue); font-size:.93rem; }
-
-/* ---------- Capturas del sistema ---------- */
-/* ---------- Quiénes somos ---------- */
-.nosotros-rejilla{
-  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:start;
-}
-.firma-encabezado{
-  display:flex; align-items:center; gap:20px; margin-bottom:26px;
-}
-.firma-sello{
-  width:70px; height:70px; border-radius:50%; flex-shrink:0;
-  background:var(--laca-alta); border:1px solid var(--laca-borde);
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--display); font-weight:800; font-size:1.42rem;
-  letter-spacing:-.03em; color:var(--ocre);
-}
-.firma-nombre{
-  font-family:var(--display); font-weight:800; font-size:1.5rem;
-  letter-spacing:-.03em; line-height:1.2; margin-bottom:3px;
-}
-.firma-cargo{
-  font-family:var(--mono); font-size:.71rem; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--ocre);
-}
-.firma-texto{ color:var(--hueso-tenue); font-size:1.02rem; max-width:58ch; }
-.firma-texto + .firma-texto{ margin-top:16px; }
+.seccion--alta .sello{ background:var(--laca); }
+.firma-nombre{ font-family:var(--display); font-weight:800; font-size:1.45rem; letter-spacing:-.03em; line-height:1.2; margin-bottom:2px; }
+.firma-cargo{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ocre); }
+.firma-texto{ color:var(--hueso-medio); font-size:1.01rem; max-width:58ch; }
+.firma-texto + .firma-texto{ margin-top:15px; }
 .firma-texto strong{ color:var(--hueso); font-weight:700; }
+.vision{ background:var(--laca); border:1px solid var(--borde); border-left:2px solid var(--ocre); border-radius:0 var(--r-medio) var(--r-medio) 0; padding:30px 30px 28px; }
+.seccion--alta .vision{ background:var(--laca-alta); }
+.vision-rotulo{ font-family:var(--mono); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--ocre); margin-bottom:15px; }
+.vision-texto{ font-family:var(--display); font-weight:600; font-size:1.2rem; line-height:1.42; letter-spacing:-.02em; margin-bottom:14px; }
+.vision-detalle{ color:var(--hueso-medio); font-size:.95rem; }
+.principios{ display:grid; grid-template-columns:repeat(auto-fit,minmax(248px,1fr)); gap:1px; background:var(--borde); border-radius:var(--r-medio); overflow:hidden; margin-top:52px; }
+.principio{ background:var(--laca); padding:28px 28px 26px; }
+.seccion--alta .principio{ background:var(--laca-alta); }
+.principio-titulo{ font-family:var(--display); font-weight:600; font-size:1.08rem; letter-spacing:-.02em; margin-bottom:8px; }
+.principio-texto{ color:var(--hueso-medio); font-size:.94rem; }
 
-.bloque-vision{
-  background:var(--laca-alta); border:1px solid var(--laca-borde);
-  border-left:2px solid var(--ocre);
-  border-radius:0 15px 15px 0; padding:32px 32px 30px;
-}
-.seccion--alta .bloque-vision{ background:var(--laca); }
-.vision-rotulo{
-  font-family:var(--mono); font-size:.71rem; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--ocre); margin-bottom:16px;
-}
-.vision-texto{
-  font-family:var(--display); font-weight:600;
-  font-size:1.24rem; line-height:1.42; letter-spacing:-.02em;
-  margin-bottom:16px;
-}
-.vision-detalle{ color:var(--hueso-tenue); font-size:.97rem; }
-
-.principios{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:2px; background:var(--laca-borde);
-  border-radius:14px; overflow:hidden; margin-top:56px;
-}
-.principio{ background:var(--laca-alta); padding:30px 30px 28px; }
-.seccion--alta .principio{ background:var(--laca); }
-.principio-titulo{
-  font-family:var(--display); font-weight:600; font-size:1.1rem;
-  letter-spacing:-.02em; margin-bottom:9px;
-}
-.principio-texto{ color:var(--hueso-tenue); font-size:.95rem; }
-
-/* ---------- Cierre ---------- */
-.cierre{ padding:104px 0; text-align:center; }
-.cierre-titulo{
-  font-family:var(--display); font-weight:800;
-  font-size:clamp(2rem,4.2vw,3.1rem);
-  letter-spacing:-.035em; line-height:1.08; margin-bottom:18px;
-}
-.cierre-texto{ color:var(--hueso-tenue); font-size:1.09rem; max-width:48ch; margin:0 auto 38px; }
-
-/* ---------- Pie ---------- */
-.pie{ border-top:1px solid var(--laca-borde); padding:36px 0; font-size:.87rem; color:var(--hueso-tenue); }
+.cierre{ padding:96px 0; text-align:center; }
+.cierre-titulo{ font-family:var(--display); font-weight:800; font-size:clamp(2rem,4.1vw,3rem); letter-spacing:-.038em; line-height:1.08; margin-bottom:16px; text-wrap:balance; }
+.cierre-texto{ color:var(--hueso-medio); font-size:1.07rem; max-width:50ch; margin:0 auto 34px; }
+.pie{ border-top:1px solid var(--borde); padding:34px 0; font-size:.86rem; color:var(--hueso-tenue); }
 .pie .contenedor{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
 .pie a{ color:var(--hueso-tenue); text-decoration:none; }
 .pie a:hover{ color:var(--ocre); }
 
-/* ---------- Responsive ---------- */
-@media (max-width:900px){
-  .portada .contenedor{ grid-template-columns:1fr; gap:56px; }
-  .portada{ padding:60px 0 76px; }
-  .marco-recibo{ order:-1; }
-  .recibo{ transform:rotate(-1deg); max-width:320px; }
-  .seccion{ padding:72px 0; }
-  .ficha{ padding:38px 26px 30px; }
-  .ficha-titulo{ font-size:1.65rem; }
-  .paso{ grid-template-columns:44px 1fr; gap:16px; padding:24px; }
-  .rejilla-planes{ grid-template-columns:1fr; }
-  .nosotros-rejilla{ grid-template-columns:1fr; gap:40px; }
-  .bloque-vision{ border-radius:0 13px 13px 0; padding:28px 26px 26px; }
-  .principios{ margin-top:40px; }
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width:1000px){
+  .mostrador{ grid-template-columns:1fr; }
+  .panel-lado{ flex-direction:row; align-items:flex-start; }
+  .telefono{ flex:1; }
+  .nota-demo{ flex:0 0 200px; text-align:left; }
+  .sistema-cabeza{ grid-template-columns:1fr; gap:30px; }
+  .medida{ grid-template-columns:1fr; gap:32px; padding:38px 32px 34px; }
 }
-@media (max-width:560px){
+@media (max-width:900px){
+  .portada .contenedor{ grid-template-columns:1fr; gap:52px; }
+  .portada{ padding:56px 0 60px; }
+  .marco-recibo{ order:-1; }
+  .recibo{ transform:rotate(-1deg); max-width:318px; }
+  .seccion{ padding:66px 0; }
+  .contraste{ grid-template-columns:1fr; }
+  .nosotros{ grid-template-columns:1fr; gap:38px; }
+  .vision{ padding:26px 24px; }
+  .principios{ margin-top:38px; }
+  .paso{ grid-template-columns:40px 1fr; gap:15px; padding:22px 24px; }
+  .panel-lado{ flex-direction:column; }
+  .nota-demo{ flex:none; text-align:center; }
+}
+@media (max-width:620px){
   body{ font-size:16px; }
   .contenedor{ padding:0 20px; }
   .nav-enlace{ display:none; }
-  .acciones-portada{ flex-direction:column; align-items:stretch; }
-  .boton-wa{ justify-content:center; }
-  .etiqueta-telegram{ right:-6px; font-size:.65rem; }
-  .pregunta summary{ padding:20px 22px; font-size:1rem; }
-  .pregunta-cuerpo{ padding:0 22px 22px; }
+  .acciones{ flex-direction:column; align-items:stretch; }
+  .wa{ justify-content:center; }
+  .productos{ grid-template-columns:repeat(2,1fr); }
+  .total-monto{ font-size:2.1rem; }
+  .acciones-caja{ flex-direction:column; }
+  .precio-monto{ font-size:2.1rem; }
+  .pregunta summary{ padding:19px 22px; font-size:1rem; }
+  .pregunta-cuerpo{ padding:0 22px 20px; }
+  .etiqueta-flotante{ right:-6px; font-size:.64rem; }
+  .caja-cuerpo{ padding:16px; }
+  .pestana{ min-width:104px; padding:12px 10px; font-size:.66rem; }
+  .medida{ padding:30px 24px 28px; }
 }
-
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    transition-duration:.01ms !important;
-  }
-  .aparece{ opacity:1; }
+  *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
   html{ scroll-behavior:auto; }
 }
 </style>
-</head>
-<body>
+
 <div class="envoltura">
 
 <header class="encabezado">
   <div class="contenedor">
     <a href="#" class="marca"><span class="marca-signo">&lt;/&gt;</span>HyperCode</a>
-    <nav class="nav-acciones">
-      <a href="#proyectos" class="nav-enlace">Proyectos</a>
-      <a href="#capturas" class="nav-enlace">Así se ve</a>
+    <nav class="nav">
+      <a href="#probar" class="nav-enlace">Probar</a>
+      <a href="#sistemas" class="nav-enlace">Sistemas</a>
+      <a href="#medida" class="nav-enlace">A la medida</a>
       <a href="#proceso" class="nav-enlace">Cómo trabajo</a>
       <a href="#preguntas" class="nav-enlace">Preguntas</a>
-      <a href="#nosotros" class="nav-enlace">Nosotros</a>
-      <a class="boton-wa" href="https://wa.me/19543019626?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20HyperCode%20y%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">
+      <a class="wa" href="https://wa.me/19543019626?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20HyperCode%20y%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
         WhatsApp
       </a>
@@ -522,69 +423,293 @@ a{ color:inherit; }
   <div class="contenedor">
     <div>
       <p class="cejilla">Rabinal, Baja Verapaz</p>
-      <h1 class="titulo-portada">
-        Software que <em>trabaja</em><br>desde el mostrador.
-      </h1>
-      <p class="entrada-portada">
-        Sistemas de inventario y punto de venta para farmacias, tiendas
-        y boutiques. Se instalan en su computadora, funcionan sin internet,
-        y yo mismo se los dejo andando.
+      <h1 class="titulo-portada">Software que <em>trabaja</em><br>desde el mostrador.</h1>
+      <p class="entrada">
+        Inventario, punto de venta y control de rentas para negocios de Guatemala.
+        Se instalan en su computadora, funcionan sin internet, y yo mismo
+        se los dejo andando.
       </p>
-      <p class="insignia-prueba">✓ &nbsp;Pruébelo gratis 3 meses &middot; queda 1 cupo</p>
-      <div class="acciones-portada">
-        <a class="boton-wa boton-wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20quiero%20el%20cupo%20que%20queda%20de%20prueba%20gratis%20de%203%20meses" target="_blank" rel="noopener">
+      <p class="insignia">✓&nbsp; Pruébelo gratis 3 meses antes de pagar nada</p>
+      <div class="acciones">
+        <a class="wa wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20quiero%20la%20prueba%20gratis%20de%203%20meses" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
           Pedir la prueba gratis
         </a>
-        <a class="boton-wa boton-wa--grande boton-wa--fantasma" href="#proyectos">Ver precios</a>
+        <a class="wa wa--grande wa--fantasma" href="#probar">Probarlo aquí mismo ↓</a>
       </div>
     </div>
 
     <div class="marco-recibo">
-      <div class="recibo" role="img" aria-label="Ejemplo de recibo de venta generado por el sistema: Farmacia Santa Elena, tres productos, total 78 quetzales.">
-        <div class="etiqueta-telegram aparece" style="animation-delay:1.55s">Enviado a su celular</div>
-        <p class="recibo-negocio aparece" style="animation-delay:.15s">Farmacia Santa Elena</p>
-        <p class="recibo-sub aparece" style="animation-delay:.25s">Recibo de venta</p>
-        <div class="recibo-regla aparece" style="animation-delay:.35s"></div>
-        <div class="recibo-fila aparece" style="animation-delay:.45s"><span>Fecha</span><span>14:32</span></div>
-        <div class="recibo-fila aparece" style="animation-delay:.55s"><span>Vendedor</span><span>Marta L.</span></div>
-        <div class="recibo-regla aparece" style="animation-delay:.65s"></div>
-        <div class="recibo-fila aparece" style="animation-delay:.8s"><span>Acetaminofén 500mg x2</span><span>Q18.00</span></div>
-        <div class="recibo-fila aparece" style="animation-delay:.95s"><span>Suero oral x1</span><span>Q12.00</span></div>
-        <div class="recibo-fila aparece" style="animation-delay:1.1s"><span>Alcohol en gel 250ml</span><span>Q48.00</span></div>
-        <div class="recibo-regla aparece" style="animation-delay:1.2s"></div>
-        <div class="recibo-total aparece" style="animation-delay:1.3s"><span>TOTAL</span><span>Q78.00</span></div>
-        <p class="recibo-pie aparece" style="animation-delay:1.45s">Inventario actualizado automáticamente</p>
-        <div class="recibo-barras aparece" style="animation-delay:1.6s"></div>
+      <div class="recibo" role="img" aria-label="Recibo de venta de ejemplo: Farmacia Santa Elena, tres productos, total setenta y ocho quetzales.">
+        <div class="etiqueta-flotante">Le llega al celular</div>
+        <p class="recibo-negocio">Farmacia Santa Elena</p>
+        <p class="recibo-sub">Recibo de venta</p>
+        <div class="recibo-regla"></div>
+        <div class="recibo-fila"><span>Fecha</span><span>14:32</span></div>
+        <div class="recibo-fila"><span>Vendedor</span><span>Marta L.</span></div>
+        <div class="recibo-regla"></div>
+        <div class="recibo-fila"><span>Acetaminofén 500mg ×2</span><span>Q18.00</span></div>
+        <div class="recibo-fila"><span>Suero oral ×1</span><span>Q12.00</span></div>
+        <div class="recibo-fila"><span>Alcohol en gel 250ml</span><span>Q48.00</span></div>
+        <div class="recibo-regla"></div>
+        <div class="recibo-total"><span>TOTAL</span><span>Q78.00</span></div>
+        <p class="recibo-pie">Inventario actualizado automáticamente</p>
+        <div class="recibo-barras"></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="barras" aria-hidden="true"></div>
+<div class="cenefa" aria-hidden="true"></div>
 
-<!-- ===================== PROYECTOS ===================== -->
-<section class="seccion seccion--alta" id="proyectos">
+<!-- ===================== EL MOSTRADOR ===================== -->
+<section class="seccion seccion--alta" id="probar">
   <div class="contenedor">
-    <div class="cabeza-seccion">
-      <h2 class="titulo-seccion">Proyectos</h2>
+    <div class="cabeza">
+      <h2 class="titulo-seccion">Párese detrás del mostrador</h2>
       <p class="texto-seccion">
-        Toque cualquiera para ver todo lo que incluye, los precios
-        y qué cubre el plan anual.
+        Toque un producto para agregarlo a la venta, cobre, y vea lo que pasa
+        con su inventario y con su celular. Es cómo se siente el sistema en el día a día.
       </p>
     </div>
-    <div class="rejilla-proyectos" id="rejilla"></div>
+
+    <div class="mostrador">
+      <div class="caja">
+        <div class="caja-barra">
+          <span class="caja-luces" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="caja-titulo">Modo Venta — Farmacia Santa Elena</span>
+        </div>
+        <div class="caja-cuerpo">
+          <div class="escaneo">
+            <span class="escaneo-icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5v14M7 5v14M11 5v14M15 5v10M19 5v14"/></svg>
+            </span>
+            <span class="escaneo-texto">Escanee el código de barras<span class="escaneo-cursor" aria-hidden="true"></span></span>
+          </div>
+
+          <p class="rotulo-mini">O toque el producto</p>
+          <div class="productos" id="productos"></div>
+
+          <p class="rotulo-mini">Venta en curso</p>
+          <div class="ticket" id="ticket"></div>
+
+          <div class="total-fila">
+            <span class="total-rotulo">Total</span>
+            <span class="total-monto" id="total">Q0.00</span>
+          </div>
+
+          <div class="acciones-caja">
+            <button class="wa wa--fantasma" type="button" id="btn-limpiar">Cancelar venta</button>
+            <button class="wa" type="button" id="btn-cobrar">Cobrar</button>
+          </div>
+
+          <div class="salida-recibo" id="salida-recibo"></div>
+        </div>
+      </div>
+
+      <div class="panel-lado">
+        <div class="telefono">
+          <div class="telefono-muesca" aria-hidden="true"></div>
+          <div class="telefono-hora"><span>14:32</span><span>El celular del dueño</span></div>
+          <div id="avisos"><p class="aviso-espera">Cobre una venta y mire lo que le llega.</p></div>
+        </div>
+        <p class="nota-demo">
+          Los avisos al celular van en el plan de Q1,800.<br>
+          El resto funciona sin internet.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===================== PROCESO ===================== -->
-<section class="seccion" id="proceso">
+<div class="cenefa" aria-hidden="true"></div>
+
+<!-- ===================== CONTRASTE ===================== -->
+<section class="seccion">
   <div class="contenedor">
-    <div class="cabeza-seccion">
+    <div class="cabeza">
+      <h2 class="titulo-seccion">Lo que cambia el lunes</h2>
+      <p class="texto-seccion">No es tecnología por tecnología. Es dejar de perder dinero por no saber qué tiene.</p>
+    </div>
+    <div class="contraste">
+      <div class="columna">
+        <p class="columna-rotulo">Como lo lleva hoy</p>
+        <ul class="lista-contraste">
+          <li>Se entera de que un producto se venció cuando lo va a vender</li>
+          <li>Se le acaba lo que más rota y lo descubre con el cliente enfrente</li>
+          <li>Para saber cuánto vendió hoy tiene que sentarse a sumar</li>
+          <li>No sabe qué empleado hizo cada venta</li>
+          <li>Si se equivoca al cobrar, corrige el cuaderno a mano</li>
+          <li>Si no está en el local, no sabe qué está pasando</li>
+        </ul>
+      </div>
+      <div class="columna columna--nuestra">
+        <p class="columna-rotulo">Con HyperCode</p>
+        <ul class="lista-contraste">
+          <li>Le avisa hasta con tres meses de anticipación antes de que algo se venza</li>
+          <li>Le avisa cuando un producto llega al mínimo que usted puso</li>
+          <li>El resumen del día sale solo al cerrar el programa</li>
+          <li>Cada venta queda con el nombre de quien la hizo</li>
+          <li>Anula la venta y el producto regresa solo al inventario</li>
+          <li>Le llega cada recibo al celular, esté donde esté</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cenefa" aria-hidden="true"></div>
+
+<!-- ===================== SISTEMAS ===================== -->
+<section class="seccion seccion--alta" id="sistemas">
+  <div class="contenedor">
+    <div class="cabeza">
+      <h2 class="titulo-seccion">Nuestros sistemas</h2>
+      <p class="texto-seccion">
+        Dos programas terminados y funcionando. Las pantallas que ve abajo son
+        capturas del sistema real, no dibujos.
+      </p>
+    </div>
+
+    <!-- Sistema 1 -->
+    <article class="sistema">
+      <div class="sistema-cabeza">
+        <div>
+          <p class="sistema-para">Farmacias · Tiendas · Boutiques · Ferreterías</p>
+          <h3 class="sistema-titulo">Sistema de Inventario y Punto de Venta</h3>
+          <p class="sistema-texto">
+            Registra cada venta, descuenta el producto del inventario en el momento,
+            y le avisa antes de que algo se venza o se acabe. Todo desde la
+            computadora del negocio, sin internet.
+          </p>
+          <ul class="sistema-lista">
+            <li>Cobro con lector de código de barras o buscando por nombre</li>
+            <li>Control de lotes con su propia fecha de vencimiento</li>
+            <li>Aviso de vencimiento con hasta tres meses de anticipación</li>
+            <li>Ventas por empleado, y un PIN que protege sus costos y ganancias</li>
+            <li>Anular una venta cobrada por error: el producto regresa solo</li>
+            <li>Respaldos automáticos y copia a memoria USB con un botón</li>
+          </ul>
+        </div>
+        <div>
+          <div class="precio-caja">
+            <p class="precio-nombre">Plan anual</p>
+            <p class="precio-monto">Q1,200</p>
+            <p class="precio-periodo">al año · una computadora · aprox. US$160</p>
+            <p class="precio-detalle">El sistema completo sin internet, con instalación y soporte incluidos.</p>
+            <a class="wa wa--fantasma" href="https://wa.me/19543019626?text=Hola%2C%20me%20interesa%20el%20plan%20anual%20de%20Q1%2C200%20del%20sistema%20de%20inventario" target="_blank" rel="noopener">Preguntar por este plan</a>
+          </div>
+          <div class="precio-caja precio-caja--destacada">
+            <p class="precio-nombre">Plan anual con avisos</p>
+            <p class="precio-monto">Q1,800</p>
+            <p class="precio-periodo">al año · una computadora · aprox. US$240</p>
+            <p class="precio-detalle">Todo lo anterior, más el recibo de cada venta y las alertas en su celular al momento.</p>
+            <a class="wa" href="https://wa.me/19543019626?text=Hola%2C%20me%20interesa%20el%20plan%20con%20avisos%20de%20Q1%2C800" target="_blank" rel="noopener">Preguntar por este plan</a>
+          </div>
+        </div>
+      </div>
+      <div class="visor" data-visor="inv"></div>
+    </article>
+
+    <!-- Sistema 2 -->
+    <article class="sistema">
+      <div class="sistema-cabeza">
+        <div>
+          <p class="sistema-para">Renta de maquinaria · Vehículos · Equipo de construcción</p>
+          <h3 class="sistema-titulo">HyperRentals — control de rentas</h3>
+          <p class="sistema-texto">
+            Para el negocio que presta equipo y necesita saber qué está afuera,
+            con quién, desde cuándo y cuánto se cobró. Lleva el contrato completo,
+            desde que sale hasta que regresa.
+          </p>
+          <ul class="sistema-lista">
+            <li>Catálogo de máquinas y vehículos con su tarifa por día, semana o mes</li>
+            <li>Contratos con depósito, fecha de salida y fecha de devolución</li>
+            <li>Marca solo lo que está afuera y avisa lo que ya viene atrasado</li>
+            <li>Ficha de cliente con teléfono, identificación y su historial de rentas</li>
+            <li>Cobro y devolución con el método de pago registrado</li>
+            <li>Anular un contrato con el motivo y liberar el equipo</li>
+            <li>Español, inglés y portugués</li>
+          </ul>
+        </div>
+        <div>
+          <div class="precio-caja">
+            <p class="precio-nombre">Plan anual</p>
+            <p class="precio-monto">Q1,800</p>
+            <p class="precio-periodo">al año · una computadora · aprox. US$240</p>
+            <p class="precio-detalle">Catálogo, contratos, clientes y devoluciones, funcionando sin internet. Instalación y soporte incluidos.</p>
+            <a class="wa wa--fantasma" href="https://wa.me/19543019626?text=Hola%2C%20me%20interesa%20el%20plan%20anual%20de%20Q1%2C800%20de%20HyperRentals" target="_blank" rel="noopener">Preguntar por este plan</a>
+          </div>
+          <div class="precio-caja precio-caja--destacada">
+            <p class="precio-nombre">Plan anual con avisos</p>
+            <p class="precio-monto">Q2,700</p>
+            <p class="precio-periodo">al año · una computadora · aprox. US$360</p>
+            <p class="precio-detalle">
+              Todo lo anterior, más el aviso al celular cuando un contrato
+              <strong>vence hoy</strong> o cuando <strong>ya viene atrasado</strong>,
+              esté usted en el patio o no.
+            </p>
+            <a class="wa" href="https://wa.me/19543019626?text=Hola%2C%20me%20interesa%20el%20plan%20con%20avisos%20de%20Q2%2C700%20de%20HyperRentals" target="_blank" rel="noopener">Preguntar por este plan</a>
+          </div>
+          <p class="precio-nota">
+            Precio de introducción: va a subir para quien entre después, pero
+            <strong>a usted le respeto este precio en cada renovación</strong>.
+            Con más de 25 máquinas o vehículos, escríbame y lo cotizamos.
+          </p>
+        </div>
+      </div>
+      <div class="visor" data-visor="ren"></div>
+    </article>
+  </div>
+</section>
+
+<div class="cenefa" aria-hidden="true"></div>
+
+<!-- ===================== A LA MEDIDA ===================== -->
+<section class="seccion" id="medida">
+  <div class="contenedor">
+    <div class="medida">
+      <div>
+        <h2 class="medida-titulo">¿Ninguno de los dos le queda?<br>Se lo hacemos a la medida.</h2>
+        <p class="medida-texto">
+          Los dos sistemas de arriba nacieron así: un comerciante me contó un
+          problema concreto y lo construimos. <strong>Si lo que usted necesita no
+          existe todavía, cuéntemelo.</strong>
+        </p>
+        <p class="medida-texto">
+          No hay compromiso por preguntar. Le digo de frente si se puede hacer,
+          cuánto costaría y cuánto se tardaría — y si su problema se resuelve
+          con algo que ya existe y es más barato, también se lo digo.
+        </p>
+        <a class="wa wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20necesito%20un%20software%20a%20la%20medida.%20Le%20cuento%20mi%20caso%3A" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
+          Contarle mi caso
+        </a>
+      </div>
+      <div>
+        <p class="sistema-para">Cosas que sí se pueden hacer</p>
+        <ul class="medida-ejemplos">
+          <li><strong>Un rubro que no encaja.</strong> Panadería, taller mecánico, agroservicio, distribuidora: cada uno cuenta sus cosas distinto.</li>
+          <li><strong>El reporte que su contador le pide</strong> y que ningún programa le saca como lo necesita.</li>
+          <li><strong>Control de producción</strong>, no solo de lo que compra y vende: materia prima que entra y producto terminado que sale.</li>
+          <li><strong>Ajustes a estos mismos sistemas</strong> para que hagan lo que su negocio hace de forma diferente.</li>
+          <li><strong>Automatizar algo que hoy hace a mano</strong> todos los días y le come una hora.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cenefa" aria-hidden="true"></div>
+
+<!-- ===================== PROCESO ===================== -->
+<section class="seccion seccion--alta" id="proceso">
+  <div class="contenedor">
+    <div class="cabeza">
       <h2 class="titulo-seccion">Cómo trabajo</h2>
       <p class="texto-seccion">
-        Usted no instala nada ni configura nada. Yo me conecto a su
-        computadora y lo dejo funcionando el mismo día.
+        Usted no instala nada ni configura nada. Yo me conecto a su computadora
+        y lo dejo funcionando el mismo día.
       </p>
     </div>
     <div class="pasos">
@@ -599,7 +724,7 @@ a{ color:inherit; }
         <div class="paso-num">02</div>
         <div>
           <h3 class="paso-titulo">Lo prueba 3 meses gratis</h3>
-          <p class="paso-texto">Se lo instalo completo, sin pagar nada. Lo usa tres meses con sus productos reales y decide con el sistema en la mano. De los 2 cupos de prueba ya solo queda 1.</p>
+          <p class="paso-texto">Se lo instalo completo, sin pagar nada. Lo usa tres meses con sus productos reales y decide con el sistema en la mano.</p>
         </div>
       </div>
       <div class="paso">
@@ -613,25 +738,24 @@ a{ color:inherit; }
         <div class="paso-num">04</div>
         <div>
           <h3 class="paso-titulo">Queda con soporte incluido</h3>
-          <p class="paso-texto">Su licencia incluye dos revisiones al año sin costo. Si necesita más, cada una cuesta Q200.</p>
+          <p class="paso-texto">Su licencia incluye dos revisiones al año sin costo. Me escribe a mí por WhatsApp, no a un call center.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="barras" aria-hidden="true"></div>
+<div class="cenefa" aria-hidden="true"></div>
 
 <!-- ===================== PREGUNTAS ===================== -->
-<section class="seccion seccion--alta" id="preguntas">
+<section class="seccion" id="preguntas">
   <div class="contenedor">
-    <div class="cabeza-seccion">
+    <div class="cabeza">
       <h2 class="titulo-seccion">Preguntas frecuentes</h2>
       <p class="texto-seccion">Lo que más me preguntan antes de decidir.</p>
     </div>
     <div class="preguntas">
-
-      <details class="pregunta">
+      <details class="pregunta" open>
         <summary>¿Necesito internet para usarlo?</summary>
         <div class="pregunta-cuerpo">
           No. El sistema completo funciona sin conexión: cobrar, controlar inventario,
@@ -639,7 +763,6 @@ a{ color:inherit; }
           el plan con avisos, que le manda los avisos al celular en tiempo real.
         </div>
       </details>
-
       <details class="pregunta">
         <summary>¿Qué pasa cuando se termina mi año?</summary>
         <div class="pregunta-cuerpo">
@@ -649,36 +772,6 @@ a{ color:inherit; }
           Le aviso dentro del programa 15 días antes para que no lo agarre de sorpresa.
         </div>
       </details>
-
-        <details class="pregunta">
-        <summary>¿Puedo usarlo en dos computadoras?</summary>
-        <div class="pregunta-cuerpo">
-          El sistema está hecho para una computadora, y esa es la razón de que funcione
-          sin internet y sin costos mensuales. Si tiene dos sucursales separadas,
-          escríbame y lo vemos. Si necesita dos cajas del mismo local viendo el mismo
-          inventario, eso es la versión multi-caja, que está en desarrollo.
-        </div>
-      </details>
-
-      <details class="pregunta">
-        <summary>¿Qué incluye el soporte?</summary>
-        <div class="pregunta-cuerpo">
-          Su licencia anual incluye <strong>dos revisiones sin costo</strong> durante el año:
-          si algo falla o se le desconfigura algo, me escribe y me conecto a revisarlo.
-          A partir de la tercera, cada revisión cuesta Q200. Las funciones nuevas que saque
-          más adelante se ofrecen aparte — usted decide si las quiere.
-        </div>
-      </details>
-
-      <details class="pregunta">
-        <summary>¿Emite facturas electrónicas de la SAT?</summary>
-        <div class="pregunta-cuerpo">
-          Todavía no. El sistema genera recibos de venta para su control y para el cliente,
-          pero no está conectado al régimen FEL. Si necesita facturar electrónicamente,
-          por ahora tendría que seguir haciéndolo por su medio actual.
-        </div>
-      </details>
-
       <details class="pregunta">
         <summary>¿Y si no me gusta?</summary>
         <div class="pregunta-cuerpo">
@@ -686,7 +779,15 @@ a{ color:inherit; }
           acepto devoluciones <strong>dentro de los primeros 15 días</strong> desde la compra.
         </div>
       </details>
-
+      <details class="pregunta">
+        <summary>¿Cuánto cuesta un sistema a la medida?</summary>
+        <div class="pregunta-cuerpo">
+          Depende de lo que necesite, así que no le puedo dar un número sin oír el caso.
+          Lo que sí le garantizo: <strong>le doy el precio y el plazo por escrito antes de
+          empezar nada</strong>, y si su problema se resuelve con uno de los sistemas que
+          ya existen, se lo digo en vez de venderle un desarrollo.
+        </div>
+      </details>
       <details class="pregunta">
         <summary>¿Mi empleado puede ver cuánto gano?</summary>
         <div class="pregunta-cuerpo">
@@ -694,7 +795,15 @@ a{ color:inherit; }
           el inventario y la configuración quedan detrás de un PIN que solo usted conoce.
         </div>
       </details>
-
+      <details class="pregunta">
+        <summary>¿Y si me equivoco al cobrar?</summary>
+        <div class="pregunta-cuerpo">
+          Se anula la venta desde el historial y los productos regresan solos al
+          inventario. La venta no se borra: queda marcada en rojo con el motivo,
+          para que usted vea siempre qué se anuló y por qué. Si tiene el plan con
+          avisos, le llega el aviso al celular en el momento.
+        </div>
+      </details>
       <details class="pregunta">
         <summary>¿Sirve en una computadora vieja?</summary>
         <div class="pregunta-cuerpo">
@@ -705,76 +814,64 @@ a{ color:inherit; }
           Lo dejo probado el día de la instalación.
         </div>
       </details>
-
-      <details class="pregunta">
-        <summary>¿Y si me equivoco al cobrar?</summary>
-        <div class="pregunta-cuerpo">
-          Se anula la venta desde el historial y los productos regresan solos al
-          inventario. La venta no se borra: queda marcada en rojo con el motivo,
-          para que usted vea siempre qué se anuló y por qué. Si tiene el plan con
-          avisos, le llega el aviso al celular en el momento.
-        </div>
-      </details>
-
-      <details class="pregunta">
-        <summary>¿Necesito lector de código de barras?</summary>
-        <div class="pregunta-cuerpo">
-          No es obligatorio — puede buscar los productos por nombre. Pero con lector el cobro
-          es mucho más rápido y cargar el inventario toma bastante menos tiempo.
-          Sirve cualquier lector USB común.
-        </div>
-      </details>
-
       <details class="pregunta">
         <summary>¿Se pierden mis datos si se apaga la luz?</summary>
         <div class="pregunta-cuerpo">
           Cada venta se guarda en el momento, así que un apagón no le borra el trabajo del día.
-          Además el sistema deja respaldos automáticos en la misma computadora cada vez que cierra.
+          Además el sistema deja respaldos automáticos en la misma computadora cada vez que cierra,
+          y con un botón puede sacar una copia a una memoria USB.
         </div>
       </details>
-
+      <details class="pregunta">
+        <summary>¿Emite facturas electrónicas de la SAT?</summary>
+        <div class="pregunta-cuerpo">
+          Todavía no. El sistema genera recibos de venta para su control y para el cliente,
+          pero no está conectado al régimen FEL. Si necesita facturar electrónicamente,
+          por ahora tendría que seguir haciéndolo por su medio actual.
+        </div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Puedo usarlo en dos computadoras?</summary>
+        <div class="pregunta-cuerpo">
+          El sistema está hecho para una computadora, y esa es la razón de que funcione
+          sin internet y sin costos mensuales. Si tiene dos sucursales separadas,
+          escríbame y lo vemos. Si necesita dos cajas del mismo local viendo el mismo
+          inventario, eso es la versión multi-caja, que está en desarrollo.
+        </div>
+      </details>
+      <details class="pregunta">
+        <summary>¿Necesito lector de código de barras?</summary>
+        <div class="pregunta-cuerpo">
+          No es obligatorio: puede buscar los productos por nombre, como en la demostración
+          de arriba. Pero con lector el cobro es mucho más rápido y cargar el inventario
+          toma bastante menos tiempo. Sirve cualquier lector USB común.
+        </div>
+      </details>
     </div>
   </div>
 </section>
 
-<div class="barras" aria-hidden="true"></div>
+<div class="cenefa" aria-hidden="true"></div>
 
-<!-- ===================== CAPTURAS ===================== -->
-<section class="seccion" id="capturas">
+<!-- ===================== NOSOTROS ===================== -->
+<section class="seccion seccion--alta" id="nosotros">
   <div class="contenedor">
-    <div class="cabeza-seccion">
-      <h2 class="titulo-seccion">Así se ve</h2>
-      <p class="texto-seccion">
-        El sistema funcionando. Lo mismo que va a tener en su mostrador.
-      </p>
-    </div>
-    <div class="rejilla-capturas" id="rejilla-capturas"></div>
-  </div>
-</section>
-
-<div class="barras" aria-hidden="true"></div>
-
-<!-- ===================== QUIÉNES SOMOS ===================== -->
-<section class="seccion" id="nosotros">
-  <div class="contenedor">
-    <div class="cabeza-seccion">
+    <div class="cabeza">
       <h2 class="titulo-seccion">Quiénes somos</h2>
       <p class="texto-seccion">
         Una casa de desarrollo guatemalteca dedicada a construir herramientas
         que resuelvan problemas reales del comercio nacional.
       </p>
     </div>
-
-    <div class="nosotros-rejilla">
+    <div class="nosotros">
       <div>
-        <div class="firma-encabezado">
-          <div class="firma-sello" aria-hidden="true">OG</div>
+        <div class="firma">
+          <div class="sello" aria-hidden="true">OG</div>
           <div>
             <p class="firma-nombre">Oscar García</p>
             <p class="firma-cargo">Fundador y desarrollador</p>
           </div>
         </div>
-
         <p class="firma-texto">
           HyperCode nace en <strong>Rabinal, Baja Verapaz</strong>, de donde soy
           originario. Desarrollo, instalo y doy soporte a cada sistema
@@ -793,43 +890,32 @@ a{ color:inherit; }
           una presentación.
         </p>
       </div>
-
-      <aside class="bloque-vision">
+      <aside class="vision">
         <p class="vision-rotulo">Nuestra visión</p>
         <p class="vision-texto">
           Que el comercio guatemalteco tenga acceso a tecnología hecha para su
           realidad, no adaptada de otra.
         </p>
         <p class="vision-detalle">
-          El sistema de inventario es el punto de partida. El camino es un
+          El sistema de inventario fue el punto de partida. El camino es un
           conjunto de herramientas que le devuelvan tiempo al guatemalteco en
-          su día a día: control de existencias, facturación, reportes y lo que
+          su día a día: control de existencias, rentas, reportes y lo que
           venga después. Construidas aquí, para lo que se necesita aquí.
         </p>
       </aside>
     </div>
-
     <div class="principios">
       <div class="principio">
         <h3 class="principio-titulo">El negocio es dueño de su sistema</h3>
-        <p class="principio-texto">
-          Sin servidores ajenos ni cuotas mensuales. Sus datos viven en su
-          computadora y siguen ahí pase lo que pase con nosotros.
-        </p>
+        <p class="principio-texto">Sin servidores ajenos ni cuotas mensuales. Sus datos viven en su computadora y siguen ahí pase lo que pase con nosotros.</p>
       </div>
       <div class="principio">
         <h3 class="principio-titulo">Se construye sobre necesidades reales</h3>
-        <p class="principio-texto">
-          Antes de desarrollar una función nueva, la consultamos con los negocios
-          que la usarían. Si nadie la necesita, no se construye.
-        </p>
+        <p class="principio-texto">Antes de desarrollar una función nueva, la consultamos con los negocios que la usarían. Si nadie la necesita, no se construye.</p>
       </div>
       <div class="principio">
         <h3 class="principio-titulo">Respondemos por lo que entregamos</h3>
-        <p class="principio-texto">
-          Una sola persona programa, instala y da el soporte. No hay a quién
-          trasladarle la responsabilidad cuando algo falla.
-        </p>
+        <p class="principio-texto">Una sola persona programa, instala y da el soporte. No hay a quién trasladarle la responsabilidad cuando algo falla.</p>
       </div>
     </div>
   </div>
@@ -840,10 +926,10 @@ a{ color:inherit; }
   <div class="contenedor">
     <h2 class="cierre-titulo">Pruébelo tres meses.<br>Después decide.</h2>
     <p class="cierre-texto">
-      Se lo instalo completo y sin costo por 3 meses. Ya solo queda 1 cupo. Si le sirve, seguimos.
-      Si no, no pasa nada.
+      Se lo instalo completo y sin costo por 3 meses, con sus productos reales.
+      Si le sirve, seguimos. Si no, no pasa nada.
     </p>
-    <a class="boton-wa boton-wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20quiero%20el%20cupo%20que%20queda%20de%20prueba%20gratis%20de%203%20meses%20del%20sistema" target="_blank" rel="noopener">
+    <a class="wa wa--grande" href="https://wa.me/19543019626?text=Hola%2C%20quiero%20la%20prueba%20gratis%20de%203%20meses%20del%20sistema" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>
       Pedir la prueba gratis
     </a>
@@ -859,241 +945,259 @@ a{ color:inherit; }
 
 </div><!-- /envoltura -->
 
-<div class="velo" id="velo" role="dialog" aria-modal="true" aria-labelledby="ficha-titulo">
-  <div class="ficha" id="ficha"></div>
-</div>
+<script>
+/* Las capturas viven en la carpeta "capturas" al lado de este archivo.
+   Si cambias una imagen, sustituye el PNG y listo: no hay que tocar nada mas. */
+var CAPTURAS_IMG = {
+  "inv_venta":      "capturas/inv_venta.png",
+  "inv_inventario": "capturas/inv_inventario.png",
+  "inv_historial":  "capturas/inv_historial.png",
+  "ren_catalogo":   "capturas/ren_catalogo.png",
+  "ren_historial":  "capturas/ren_historial.png"
+};
+</script>
 
 <script>
-/* ==========================================================
-   LISTA DE PROYECTOS
-   Para agregar uno nuevo: copie un bloque { ... } completo,
-   péguelo dentro de los corchetes y cambie los textos.
-   estado: "activo" o "pronto"
-   ========================================================== */
-const PROYECTOS = [
-  {
-    id: "inventario",
-    estado: "activo",
-    etiquetaEstado: "Disponible",
-    titulo: "Sistema de Inventario y Punto de Venta",
-    resumen: "Controla existencias, cobra, descuenta del inventario y le avisa de lo que está por vencerse.",
-       precio: "Q1,200 <small>al año · una computadora · aprox. US$160</small>",
-    para: "Farmacias · Tiendas · Boutiques",
-    entrada: "Un programa que se instala en la computadora del negocio. Registra cada venta, descuenta el producto del inventario en el momento, y le avisa antes de que algo se venza o se acabe.",
-    incluye: [
-      "Cobro rápido con lector de código de barras, o buscando el producto por nombre",
-      "El inventario se descuenta solo con cada venta, sin apuntar nada aparte",
-      "Aviso de productos por vencer, con hasta tres meses de anticipación",
-      "Aviso cuando un producto llega al mínimo que usted configure",
-      "Control de lotes con su propia fecha de vencimiento",
-      "Registro de ventas por empleado, para saber quién vendió qué",
-      "PIN de acceso que protege sus costos y ganancias del personal",
-      "Historial completo de ventas para consultar cuando quiera",
-      "Anular una venta cobrada por error, y el producto regresa solo al inventario",
-      "Resumen del día al cerrar: cuánto vendió y cuánto ganó",
-      "Respaldos automáticos guardados en la misma computadora",
-      "Respaldo a memoria USB o disco externo, con un botón",
-      "Funciona sin internet"
-    ],
-    requisitos: "Computadora con Windows de 64 bits. El lector de código de barras es opcional pero recomendado. La instalación la hago yo de forma remota, con usted presente.",
-        planes: [
-      { nombre:"Plan anual", monto:"Q1,200", periodo:"al año, una computadora · aprox. US$160",
-        detalle:"El sistema completo funcionando sin internet, con instalación y soporte incluidos." },
-      { nombre:"Plan anual con avisos", monto:"Q1,800", periodo:"al año, una computadora · aprox. US$240", destacado:true,
-        detalle:"Todo lo anterior, más el recibo de cada venta y las alertas de stock y vencimiento en su celular al momento, esté donde esté. Requiere internet." }
-    ],
-       extra: null,
-    garantia: [
-      "<strong>Prueba gratis de 3 meses.</strong> Instalado y funcionando, sin pagar nada. Ya solo queda 1 cupo disponible.",
-      "<strong>Precios en quetzales.</strong> El monto en dólares es solo referencia y varía con el tipo de cambio.",
-      "<strong>Devolución dentro de los 15 días.</strong> Si ya pagó y no le sirvió, le devuelvo su dinero.",
-      "<strong>Instalación remota incluida.</strong> Me conecto a su computadora y lo dejo andando.",
-      "<strong>Dos revisiones al año sin costo.</strong> Si algo falla, me escribe y me conecto a revisarlo. De la tercera en adelante, Q200 cada una.",
-      "<strong>Mejoras opcionales.</strong> Cuando saque funciones nuevas se las ofrezco aparte, y usted decide si las quiere.",
-      "<strong>Soporte directo por WhatsApp.</strong> Me escribe a mí, sin call center."
-    ],
-    nota: "Queda 1 cupo de prueba gratis. Escríbame y le agendo la instalación esta semana."
-  },
-  {
-    id: "multicaja",
-    estado: "pronto",
-    etiquetaEstado: "En desarrollo",
-    titulo: "Versión multi-caja",
-    resumen: "Varias cajas del mismo local trabajando sobre un solo inventario compartido, actualizado al instante.",
-    precio: "Cotización a la medida",
-    para: "Negocios con dos o más cajas",
-    entrada: "La versión actual está hecha para una computadora, y esa es la razón de que funcione sin internet y sin costos mensuales. Para que dos cajas del mismo local compartan el mismo inventario en tiempo real hace falta una arquitectura distinta, y es en lo que estoy trabajando.",
-    incluye: [
-      "Un solo inventario para todas las cajas del local",
-      "Cada venta descuenta al instante en todas las computadoras",
-      "Reportes unificados de todo el negocio",
-      "Sobre la red del local — sin depender del internet"
-    ],
-    requisitos: "Por definir. Si le interesa, escríbame: los primeros negocios que la necesiten me ayudan a definir cómo debe funcionar.",
-    planes: [],
-    extra: null,
-    garantia: [
-      "<strong>Mismas condiciones</strong> que el resto de los sistemas: instalación, mantenimiento, garantía y soporte incluidos."
-    ],
-    nota: "¿Tiene dos o más cajas? Cuénteme su caso por WhatsApp."
-  }
-];
+"use strict";
 
+/* ==========================================================================
+   VISOR DE CAPTURAS — pantallas reales de cada sistema
+   ========================================================================== */
+var PANTALLAS = {
+  inv: [
+    { img:"inv_venta", nombre:"Modo Venta",
+      titulo:"La pantalla donde su empleado pasa el día",
+      texto:"Escanea, cobra y descuenta del inventario. A la izquierda las ventas de hoy; a la derecha, lo que está por vencerse y lo que se está acabando." },
+    { img:"inv_inventario", nombre:"Inventario",
+      titulo:"Todo su catálogo en una sola tabla",
+      texto:"Existencia, costo, precio y fecha de vencimiento. En rojo lo que llegó a su mínimo; en naranja lo que está por vencer." },
+    { img:"inv_historial", nombre:"Historial",
+      titulo:"Cada venta, con la opción de anularla",
+      texto:"Filtra por hoy, semana, mes o todo. La venta anulada queda marcada en rojo con su motivo — no se borra nunca." }
+  ],
+  ren: [
+    { img:"ren_catalogo", nombre:"Catálogo",
+      titulo:"Su equipo, y quién lo tiene",
+      texto:"Máquinas y vehículos con su tarifa por día. Lo que está rentado sale marcado y con el botón para recibirlo de vuelta." },
+    { img:"ren_historial", nombre:"Contratos",
+      titulo:"Qué está afuera y qué ya viene tarde",
+      texto:"Cada contrato con su cliente, fecha de salida, fecha de devolución y lo cobrado. Abajo, cuántos van atrasados." }
+  ]
+};
 
-/* ==========================================================
-   CAPTURAS DE PANTALLA
-   Ponga sus imagenes en la carpeta "capturas" con estos
-   nombres exactos. La que no exista, no se muestra.
-   Para agregar otra, copie un bloque { ... } y cambie los textos.
-   ========================================================== */
-const CAPTURAS = [
-  {
-    archivo: "capturas/venta.png",
-    titulo: "Modo Venta",
-    texto: "Escanea, cobra y descuenta del inventario. Es la pantalla donde su empleado pasa el dia."
-  },
-  {
-    archivo: "capturas/inventario.png",
-    titulo: "Inventario",
-    texto: "Todos sus productos con existencia, costo, precio y fecha de vencimiento."
-  },
-  {
-    archivo: "capturas/historial.png",
-    titulo: "Historial de ventas",
-    texto: "Cada venta con su detalle, y la opcion de anular la que se cobro por error."
-  }
-];
+Object.keys(PANTALLAS).forEach(function(clave){
+  var caja = document.querySelector('[data-visor="' + clave + '"]');
+  if (!caja) return;
+  var lista = PANTALLAS[clave];
 
-const rejillaCapturas = document.getElementById("rejilla-capturas");
-const seccionCapturas = document.getElementById("capturas");
-let capturasVisibles = 0;
+  var pestanas = document.createElement("div");
+  pestanas.className = "visor-pestanas";
+  pestanas.setAttribute("role", "tablist");
 
-CAPTURAS.forEach(c => {
-  const imagen = new Image();
-  imagen.src = c.archivo;
-  imagen.alt = c.titulo;
+  var marco = document.createElement("div");
+  marco.className = "visor-marco";
+  var imagen = document.createElement("img");
   imagen.loading = "lazy";
+  marco.appendChild(imagen);
 
-  imagen.onload = () => {
-    const tarjeta = document.createElement("figure");
-    tarjeta.className = "captura";
-    tarjeta.appendChild(imagen);
-    const pie = document.createElement("figcaption");
-    pie.className = "captura-pie";
-    pie.innerHTML = `<p class="captura-titulo">${c.titulo}</p><p class="captura-texto">${c.texto}</p>`;
-    tarjeta.appendChild(pie);
-    rejillaCapturas.appendChild(tarjeta);
-    capturasVisibles++;
-  };
+  var pie = document.createElement("div");
+  pie.className = "visor-pie";
 
-  // Si el archivo todavia no existe, esa tarjeta simplemente no aparece.
-  imagen.onerror = () => {};
+  function mostrar(i){
+    var p = lista[i];
+    imagen.src = (typeof CAPTURAS_IMG !== "undefined" && CAPTURAS_IMG[p.img]) || "";
+    imagen.alt = "Pantalla " + p.nombre + " del sistema";
+    pie.innerHTML = '<p class="visor-titulo">' + p.titulo + '</p>' +
+                    '<p class="visor-texto">' + p.texto + '</p>';
+    Array.prototype.forEach.call(pestanas.children, function(b, j){
+      b.setAttribute("aria-selected", j === i ? "true" : "false");
+    });
+  }
+
+  lista.forEach(function(p, i){
+    var b = document.createElement("button");
+    b.className = "pestana";
+    b.type = "button";
+    b.setAttribute("role", "tab");
+    b.textContent = p.nombre;
+    b.addEventListener("click", function(){ mostrar(i); });
+    pestanas.appendChild(b);
+  });
+
+  caja.appendChild(pestanas);
+  caja.appendChild(marco);
+  caja.appendChild(pie);
+  mostrar(0);
 });
 
-// Si no hay ninguna captura, escondemos la seccion entera.
-window.addEventListener("load", () => {
-  if (capturasVisibles === 0) seccionCapturas.style.display = "none";
-});
+/* ==========================================================================
+   EL MOSTRADOR — demostración operable
+   PARA EDITAR: la lista de productos va aquí. "min" es el stock mínimo.
+   ========================================================================== */
+var CATALOGO = [
+  { id:"aceta",   nombre:"Acetaminofén 500mg",  precio:9.00,  stock:24, min:6 },
+  { id:"suero",   nombre:"Suero oral",           precio:12.00, stock:8,  min:6 },
+  { id:"gel",     nombre:"Alcohol en gel 250ml", precio:48.00, stock:5,  min:4 },
+  { id:"ibu",     nombre:"Ibuprofeno 400mg",     precio:14.00, stock:4,  min:3 },
+  { id:"jabon",   nombre:"Jabón Protex",         precio:11.50, stock:40, min:8 },
+  { id:"vitamina",nombre:"Vitacerebrina",        precio:35.00, stock:12, min:5 }
+];
+var VENDEDORES = ["Marta L.", "Elder C.", "Sonia P."];
 
-const WA = "https://wa.me/19543019626";
-const rejilla = document.getElementById("rejilla");
-const velo    = document.getElementById("velo");
-const ficha   = document.getElementById("ficha");
-let ultimoFoco = null;
+var elProductos = document.getElementById("productos");
+var elTicket    = document.getElementById("ticket");
+var elTotal     = document.getElementById("total");
+var elAvisos    = document.getElementById("avisos");
+var elSalida    = document.getElementById("salida-recibo");
+var btnCobrar   = document.getElementById("btn-cobrar");
+var btnLimpiar  = document.getElementById("btn-limpiar");
 
-const flecha = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const iconoWa = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.5-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2"/></svg>';
+var stock = {}, ticket = {}, ventasHechas = 0;
+CATALOGO.forEach(function(p){ stock[p.id] = p.stock; });
 
-PROYECTOS.forEach(p => {
-  const b = document.createElement("button");
-  b.className = "tarjeta";
-  b.type = "button";
-  b.setAttribute("aria-haspopup", "dialog");
-  b.innerHTML = `
-    <span class="tarjeta-estado ${p.estado === "activo" ? "estado--activo" : "estado--pronto"}">${p.etiquetaEstado}</span>
-    <h3 class="tarjeta-titulo">${p.titulo}</h3>
-    <p class="tarjeta-texto">${p.resumen}</p>
-    <p class="tarjeta-precio">${p.precio}</p>
-    <span class="tarjeta-para">
-      <span>${p.para}</span>
-      <span class="tarjeta-ver">Ver detalle ${flecha}</span>
-    </span>`;
-  b.addEventListener("click", () => abrir(p, b));
-  rejilla.appendChild(b);
-});
-
-function abrir(p, origen){
-  ultimoFoco = origen;
-  const mensaje = encodeURIComponent(`Hola, me interesa: ${p.titulo}`);
-
-  const planesHTML = p.planes.length
-    ? `<div class="ficha-bloque">
-         <p class="ficha-rotulo">Precios</p>
-         <div class="rejilla-planes">
-           ${p.planes.map(pl => `
-             <div class="plan ${pl.destacado ? "plan--destacado" : ""}">
-               <p class="plan-nombre">${pl.nombre}</p>
-               <p class="plan-monto">${pl.monto}</p>
-               <p class="plan-periodo">${pl.periodo}</p>
-               <p class="plan-detalle">${pl.detalle}</p>
-             </div>`).join("")}
-         </div>
-         ${p.extra ? `
-           <div class="plan-extra">
-             <span class="plan-extra-texto">${p.extra.texto}</span>
-             <span class="plan-extra-monto">${p.extra.monto}</span>
-           </div>` : ""}
-       </div>`
-    : "";
-
-  ficha.innerHTML = `
-    <button class="ficha-cerrar" type="button" aria-label="Cerrar">&#10005;</button>
-    <span class="tarjeta-estado ${p.estado === "activo" ? "estado--activo" : "estado--pronto"}">${p.etiquetaEstado}</span>
-    <h2 class="ficha-titulo" id="ficha-titulo">${p.titulo}</h2>
-    <p class="ficha-entrada">${p.entrada}</p>
-
-    <div class="ficha-bloque">
-      <p class="ficha-rotulo">Qué incluye</p>
-      <ul class="lista-incluye">${p.incluye.map(i => `<li>${i}</li>`).join("")}</ul>
-    </div>
-
-    <div class="ficha-bloque">
-      <p class="ficha-rotulo">Qué necesita</p>
-      <p class="ficha-parrafo">${p.requisitos}</p>
-    </div>
-
-    ${planesHTML}
-
-    <div class="caja-garantia">
-      <p class="ficha-rotulo">Su plan incluye</p>
-      <ul class="garantia-lista">${p.garantia.map(i => `<li><span>${i}</span></li>`).join("")}</ul>
-    </div>
-
-    <div style="text-align:center">
-      <a class="boton-wa boton-wa--grande" href="${WA}?text=${mensaje}" target="_blank" rel="noopener">
-        ${iconoWa}
-        Preguntar por este sistema
-      </a>
-      <p class="ficha-nota">${p.nota}</p>
-    </div>`;
-
-  velo.classList.add("abierto");
-  document.body.style.overflow = "hidden";
-  const cerrarBtn = ficha.querySelector(".ficha-cerrar");
-  cerrarBtn.addEventListener("click", cerrar);
-  cerrarBtn.focus();
+function quetzales(n){ return "Q" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function producto(id){
+  for (var i = 0; i < CATALOGO.length; i++){ if (CATALOGO[i].id === id) return CATALOGO[i]; }
+  return null;
+}
+function totalVenta(){
+  var t = 0;
+  for (var id in ticket){ t += producto(id).precio * ticket[id]; }
+  return t;
 }
 
-function cerrar(){
-  velo.classList.remove("abierto");
-  document.body.style.overflow = "";
-  if (ultimoFoco) ultimoFoco.focus();
+function pintarProductos(){
+  elProductos.innerHTML = "";
+  CATALOGO.forEach(function(p){
+    var quedan = stock[p.id] - (ticket[p.id] || 0);
+    var bajo = quedan <= p.min;
+    var b = document.createElement("button");
+    b.className = "producto";
+    b.type = "button";
+    b.disabled = quedan <= 0;
+    b.setAttribute("aria-label", "Agregar " + p.nombre + " a la venta. Quedan " + quedan + ".");
+    b.innerHTML =
+      '<span class="producto-nombre">' + p.nombre + '</span>' +
+      '<span class="producto-precio">' + quetzales(p.precio) + '</span>' +
+      '<span class="producto-stock' + (bajo ? " bajo" : "") + '">' +
+        (quedan <= 0 ? "Sin existencia" : "Quedan <b>" + quedan + "</b>") + '</span>';
+    b.addEventListener("click", function(){ agregar(p.id); });
+    elProductos.appendChild(b);
+  });
 }
 
-velo.addEventListener("click", e => { if (e.target === velo) cerrar(); });
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && velo.classList.contains("abierto")) cerrar();
-});
+function pintarTicket(){
+  var ids = Object.keys(ticket);
+  elTicket.innerHTML = "";
+  if (!ids.length){
+    elTicket.innerHTML = '<p class="ticket-vacio">Toque un producto de arriba para empezar la venta.</p>';
+  } else {
+    ids.forEach(function(id){
+      var p = producto(id), cant = ticket[id];
+      var fila = document.createElement("div");
+      fila.className = "linea";
+      fila.innerHTML =
+        '<span class="linea-nombre">' + p.nombre + '</span>' +
+        '<span class="linea-cant">×' + cant + '</span>' +
+        '<span class="linea-monto">' + quetzales(p.precio * cant) + '</span>';
+      var quitar = document.createElement("button");
+      quitar.className = "linea-quitar";
+      quitar.type = "button";
+      quitar.innerHTML = "&#10005;";
+      quitar.setAttribute("aria-label", "Quitar " + p.nombre + " de la venta");
+      quitar.addEventListener("click", function(){ delete ticket[id]; pintar(); });
+      fila.appendChild(quitar);
+      elTicket.appendChild(fila);
+    });
+  }
+  var t = totalVenta();
+  elTotal.textContent = quetzales(t);
+  btnCobrar.textContent = t > 0 ? "Cobrar " + quetzales(t) : "Cobrar";
+  btnCobrar.disabled = t <= 0;
+  btnCobrar.style.opacity = t <= 0 ? ".45" : "1";
+  btnCobrar.style.cursor  = t <= 0 ? "not-allowed" : "pointer";
+}
+
+function pintar(){ pintarProductos(); pintarTicket(); }
+
+function agregar(id){
+  if (stock[id] - (ticket[id] || 0) <= 0) return;
+  ticket[id] = (ticket[id] || 0) + 1;
+  pintar();
+}
+
+function limpiar(){ ticket = {}; elSalida.classList.remove("visible"); pintar(); }
+
+function avisar(html){
+  if (elAvisos.querySelector(".aviso-espera")) elAvisos.innerHTML = "";
+  var d = document.createElement("div");
+  d.className = "aviso aviso--nuevo";
+  d.innerHTML = html;
+  elAvisos.insertBefore(d, elAvisos.firstChild);
+  while (elAvisos.children.length > 3){ elAvisos.removeChild(elAvisos.lastChild); }
+}
+
+function cobrar(){
+  var ids = Object.keys(ticket);
+  if (!ids.length) return;
+  var t = totalVenta();
+  var vendedor = VENDEDORES[ventasHechas % VENDEDORES.length];
+  var hora = new Date().toLocaleTimeString("es-GT", { hour:"2-digit", minute:"2-digit" });
+
+  var agotados = [];
+  ids.forEach(function(id){
+    stock[id] -= ticket[id];
+    var p = producto(id);
+    if (stock[id] <= p.min) agotados.push({ nombre:p.nombre, quedan:stock[id] });
+  });
+
+  var lineas = ids.map(function(id){
+    var p = producto(id);
+    return '<div class="recibo-fila"><span>' + p.nombre +
+           (ticket[id] > 1 ? " ×" + ticket[id] : "") +
+           '</span><span>' + quetzales(p.precio * ticket[id]) + '</span></div>';
+  }).join("");
+
+  elSalida.innerHTML =
+    '<div class="recibo" style="transform:rotate(-.6deg);max-width:100%">' +
+      '<p class="recibo-negocio">Farmacia Santa Elena</p>' +
+      '<p class="recibo-sub">Recibo de venta</p>' +
+      '<div class="recibo-regla"></div>' +
+      '<div class="recibo-fila"><span>Hora</span><span>' + hora + '</span></div>' +
+      '<div class="recibo-fila"><span>Vendedor</span><span>' + vendedor + '</span></div>' +
+      '<div class="recibo-regla"></div>' + lineas +
+      '<div class="recibo-regla"></div>' +
+      '<div class="recibo-total"><span>TOTAL</span><span>' + quetzales(t) + '</span></div>' +
+      '<p class="recibo-pie">Inventario actualizado automáticamente</p>' +
+      '<div class="recibo-barras"></div>' +
+    '</div>';
+  elSalida.classList.remove("visible");
+  void elSalida.offsetWidth;
+  elSalida.classList.add("visible");
+
+  avisar('<p class="aviso-cabeza"><span class="aviso-punto"></span>HyperCode · ahora</p>' +
+         '<p class="aviso-titulo">Venta registrada · ' + quetzales(t) + '</p>' +
+         '<p class="aviso-texto">' + ids.length + (ids.length === 1 ? " producto" : " productos") +
+         ' · vendió ' + vendedor + '</p>');
+
+  agotados.forEach(function(a, i){
+    window.setTimeout(function(){
+      avisar('<p class="aviso-cabeza alerta"><span class="aviso-punto"></span>Stock bajo</p>' +
+             '<p class="aviso-titulo">' + a.nombre + '</p>' +
+             '<p class="aviso-texto">' + (a.quedan <= 0 ? "Se acabó. " : "Quedan " + a.quedan + ". ") +
+             'Conviene resurtir.</p>');
+    }, 620 + i * 420);
+  });
+
+  ventasHechas++;
+  ticket = {};
+  pintar();
+}
+
+btnCobrar.addEventListener("click", cobrar);
+btnLimpiar.addEventListener("click", limpiar);
+
+/* Arranca con una venta a medias: quien llega ve el sistema trabajando. */
+ticket = { aceta: 2, suero: 1 };
+pintar();
 </script>
-</body>
-</html>
